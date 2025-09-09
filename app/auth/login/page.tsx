@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { Eye, EyeOff, ChevronsRight } from "lucide-react";
+import { ChevronsRight } from "lucide-react";
 import { AuthCard } from "@/components/auth/auth-card";
 import { CustomButton } from "@/components/ui/custom-button";
 import { Input } from "@/components/ui/input";
@@ -121,7 +121,6 @@ export default function LoginPage() {
       title={
         <>
           <span>
-            {" "}
             Bienvenido al <span className="font-bold text-orange-500">Portal Pensionados</span>
           </span>
         </>
@@ -248,7 +247,7 @@ export default function LoginPage() {
         </TabsContent>
 
         <TabsContent value="email">
-          <form onSubmit={emailForm.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={emailForm.handleSubmit(onSubmit)} className="flex flex-col gap-5">
             <div>
               <Label htmlFor="email">Correo Electrónico *</Label>
               <Input
@@ -273,27 +272,41 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <Label htmlFor="password">Contraseña</Label>
+              <Label
+                htmlFor="password"
+                className="font-poppins text-label-inputs pl-2 text-sm font-semibold"
+              >
+                Contraseña*
+              </Label>
               <div className="relative">
+                <img
+                  src="/icon-padlock.svg"
+                  alt="icon-padlock"
+                  className="absolute top-1/2 left-4.75 -translate-y-1/2 transform"
+                />
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
-                  {...emailForm.register("password", { required: "La contraseña es requerida" })}
+                  {...documentForm.register("password", { required: "La contraseña es requerida" })}
                   disabled={isLoading}
                   placeholder="Tu contraseña"
-                  className={`pr-10 ${emailForm.formState.errors.password ? "border-red-500" : ""}`}
+                  className={`px-11.75 ${documentForm.formState.errors.password ? "border-red-positiva" : ""}`}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute top-1/2 right-3 -translate-y-1/2 transform text-gray-400 hover:text-gray-600"
                 >
-                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  <img
+                    src={showPassword ? "/icon-eye-hide.svg" : "/icon-eye-show.svg"}
+                    alt="icon-mail"
+                    className=""
+                  />
                 </button>
               </div>
-              {emailForm.formState.errors.password && (
+              {documentForm.formState.errors.password && (
                 <p className="mt-1 text-sm text-red-500">
-                  {emailForm.formState.errors.password.message}
+                  {documentForm.formState.errors.password.message}
                 </p>
               )}
             </div>

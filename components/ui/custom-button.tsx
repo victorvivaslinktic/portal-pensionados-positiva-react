@@ -128,7 +128,7 @@ export const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProp
         ref={ref}
         variant={getVariant()}
         className={cn(
-          "inline-flex w-auto flex-row-reverse items-center rounded-[7px] px-[62px] py-[12px]",
+          "inline-flex w-auto items-center rounded-[7px] px-[62px] py-[12px]",
           getClassName(),
           className
         )}
