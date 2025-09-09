@@ -120,7 +120,10 @@ export default function LoginPage() {
     <AuthCard
       title={
         <>
-          Bienvenido al <span className="text-orange-500">Portal Pensionados</span>
+          <span>
+            {" "}
+            Bienvenido al <span className="font-bold text-orange-500">Portal Pensionados</span>
+          </span>
         </>
       }
       subtitle="Ingresa tu usuario y contraseña para continuar"

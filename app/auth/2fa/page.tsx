@@ -158,14 +158,15 @@ export default function TwoFAPage() {
               value={code}
               onChange={(value) => setValue("code", value)}
               disabled={isLoading || timeLeft === 0}
+              className="max-w-[486px] gap-[30px]"
             >
-              <InputOTPGroup>
-                <InputOTPSlot index={0} />
-                <InputOTPSlot index={1} />
-                <InputOTPSlot index={2} />
-                <InputOTPSlot index={3} />
-                <InputOTPSlot index={4} />
-                <InputOTPSlot index={5} />
+              <InputOTPGroup className="gap-2 md:gap-[30px]">
+                <InputOTPSlot index={0} className="h-[56px] w-[55px]" />
+                <InputOTPSlot index={1} className="h-[56px] w-[55px]" />
+                <InputOTPSlot index={2} className="h-[56px] w-[55px]" />
+                <InputOTPSlot index={3} className="h-[56px] w-[55px]" />
+                <InputOTPSlot index={4} className="h-[56px] w-[55px]" />
+                <InputOTPSlot index={5} className="h-[56px] w-[55px]" />
               </InputOTPGroup>
             </InputOTP>
           </div>
