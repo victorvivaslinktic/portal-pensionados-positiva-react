@@ -5,6 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-background: var(--custom-color-background);
   --color-primary-positiva: var(--primary-positiva);
   --color-accent-positiva: var(--accent-positiva);
   --color-navy-primary: var(--navy-primary);
@@ -53,6 +54,7 @@
 }
 
 :root {
+  --custom-color-background: #F5F5F5;
   --custom-font-poppins: "Poppins", sans-serif;
   --primary-positiva: #ff7500;
   --accent-positiva: #ee7d30;
@@ -142,7 +144,7 @@ body {
     @apply bg-background text-foreground;
   }
 }
-tailwind.config.csstailwind.config.csstailwind.config.css
+/* tailwind.config.csstailwind.config.csstailwind.config.css */
 /*.poppins-thin {
   font-family: "Poppins", sans-serif;
   font-weight: 100;
@@ -398,6 +400,6 @@ button:disabled {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
 }

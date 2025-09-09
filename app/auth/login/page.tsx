@@ -129,7 +129,7 @@ export default function LoginPage() {
       subtitle="Ingresa tu usuario y contraseña para continuar"
     >
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="mb-6 grid w-full grid-cols-2">
+        <TabsList className="mb-7.5 grid w-full grid-cols-2">
           <TabsTrigger value="document" className="flex items-center space-x-2">
             <img src="/icon-document.svg" alt="icon-mail" />
             <span className="font-poppins text-[16px] leading-[24px] font-semibold">Documento</span>
@@ -141,7 +141,7 @@ export default function LoginPage() {
         </TabsList>
 
         <TabsContent value="document">
-          <form onSubmit={documentForm.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={documentForm.handleSubmit(onSubmit)} className="flex flex-col gap-5">
             <div className="flex w-full gap-5">
               <div className="w-1/3">
                 <Label
@@ -241,7 +241,7 @@ export default function LoginPage() {
                 icon={<ChevronsRight className="h-4 w-4" />}
                 disabled={isLoading}
                 loading={isLoading}
-                className="font-poppins h-11 w-52.5 font-semibold text-white"
+                className="font-poppins border-primary-positiva h-11 w-52.5 gap-2 border py-3 font-semibold text-white"
               />
             </div>
           </form>
@@ -250,7 +250,7 @@ export default function LoginPage() {
         <TabsContent value="email">
           <form onSubmit={emailForm.handleSubmit(onSubmit)} className="space-y-4">
             <div>
-              <Label htmlFor="email">Correo Electrónico</Label>
+              <Label htmlFor="email">Correo Electrónico *</Label>
               <Input
                 id="email"
                 type="email"
@@ -298,26 +298,35 @@ export default function LoginPage() {
               )}
             </div>
 
-            <CustomButton
-              type="submit"
-              name="Ingresar"
-              iconPosition="right"
-              icon={<ChevronsRight className="h-4 w-4" />}
-              disabled={isLoading}
-              loading={isLoading}
-              className="w-full"
-            />
+            <div className="flex w-full justify-center">
+              <CustomButton
+                type="submit"
+                name="Ingresar"
+                iconPosition="right"
+                icon={<ChevronsRight className="h-4 w-4" />}
+                disabled={isLoading}
+                loading={isLoading}
+                className="font-poppins border-primary-positiva h-11 w-52.5 gap-2 border py-3 font-semibold text-white"
+              />
+            </div>
           </form>
         </TabsContent>
       </Tabs>
 
-      <div className="mt-6 text-center">
+      <div className="mt-5 flex flex-col items-center justify-center gap-5 text-center">
         <button
           onClick={handlePasswordReset}
-          className="text-primary-positiva font-medium hover:underline"
+          className="text-primary-positiva font-poppins text-lg font-bold hover:underline"
         >
           ¿Olvidaste tu contraseña?
         </button>
+
+        <p className="font-poppins text-navy-primary text-lg font-bold">
+          ¿No tienes cuenta?{" "}
+          <button onClick={handlePasswordReset} className="text-primary-positiva hover:underline">
+            Consulta aquí
+          </button>
+        </p>
       </div>
     </AuthCard>
   );

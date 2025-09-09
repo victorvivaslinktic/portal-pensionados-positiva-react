@@ -104,9 +104,7 @@ export const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProp
         );
       }
 
-      const iconElement = icon && (
-        <span className={iconPosition === "left" ? "mr-2" : "ml-2"}>{icon}</span>
-      );
+      const iconElement = icon && <span>{icon}</span>;
 
       if (children) {
         return children;

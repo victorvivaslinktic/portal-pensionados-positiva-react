@@ -59,7 +59,7 @@ export function Header() {
               >
                 <Link
                   href={item.href}
-                  className="flex items-center gap-1.25 font-extrabold whitespace-nowrap hover:underline"
+                  className="font-poppins text-4 flex items-center gap-1.25 font-extrabold whitespace-nowrap hover:underline"
                 >
                   {getIcon(item.name)}
                   <span>{item.name}</span>

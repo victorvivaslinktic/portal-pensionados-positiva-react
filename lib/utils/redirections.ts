@@ -40,11 +40,11 @@ export const redirections = {
       href: "https://positiva.gov.co/web/guest/accai",
       icon: "DollarSign",
     },
-    {
-      name: "+SALUD",
-      href: "https://positiva.gov.co/web/guest/accai",
-      icon: "+SALUD",
-    },
+    // {
+    //   name: "+SALUD",
+    //   href: "https://positiva.gov.co/web/guest/accai",
+    //   icon: "+SALUD",
+    // },
     {
       name: "PENSIONADOS",
       href: "https://positiva.gov.co/web/guest/pensionados",
