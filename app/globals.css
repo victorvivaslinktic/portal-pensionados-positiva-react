@@ -60,8 +60,8 @@
   --accent-positiva: #ee7d30;
   --navy-primary: #173748;
   --navy-secondary: #123249;
-  --custom-color-label-inputs: #5D6977;
-  --custom-color-red-positiva: #E60003;
+  --custom-color-label-inputs: #5d6977;
+  --custom-color-red-positiva: #e60003;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -402,4 +402,8 @@ button:disabled {
   background-attachment: fixed;
   min-height: 100dvh;
   width: 100%;
+}
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: var(--primary-positiva);
 }

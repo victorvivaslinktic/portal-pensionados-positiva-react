@@ -10,6 +10,7 @@ import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp
 import { authService } from "@/lib/services/auth.service";
 import { useAuthStore } from "@/lib/stores/auth.store";
 import { toast } from "@/lib/stores/toast-store";
+import Image from "next/image";
 
 type TwoFAFormData = {
   code: string;
@@ -161,16 +162,15 @@ export default function TwoFAPage() {
               className="max-w-[486px] gap-[30px]"
             >
               <InputOTPGroup className="gap-2 md:gap-[30px]">
-                <InputOTPSlot index={0} className="h-[56px] w-[55px]" />
-                <InputOTPSlot index={1} className="h-[56px] w-[55px]" />
-                <InputOTPSlot index={2} className="h-[56px] w-[55px]" />
-                <InputOTPSlot index={3} className="h-[56px] w-[55px]" />
-                <InputOTPSlot index={4} className="h-[56px] w-[55px]" />
-                <InputOTPSlot index={5} className="h-[56px] w-[55px]" />
+                <InputOTPSlot index={0} />
+                <InputOTPSlot index={1} />
+                <InputOTPSlot index={2} />
+                <InputOTPSlot index={3} />
+                <InputOTPSlot index={4} />
+                <InputOTPSlot index={5} />
               </InputOTPGroup>
             </InputOTP>
           </div>
-
           {timeLeft > 0 ? (
             <p className="text-center text-sm text-gray-600">
               Tiempo restante: <span className="font-mono font-bold">{formatTime(timeLeft)}</span>
@@ -185,10 +185,9 @@ export default function TwoFAPage() {
         <CustomButton
           type="submit"
           name="Validar Código"
-          icon={<Shield className="h-4 w-4" />}
+          icon={<Image src="/botton-icon.svg" alt="icon" width={20} height={20} />}
           disabled={isLoading || !code || code.length !== 6 || timeLeft === 0}
           loading={isLoading}
-          className="w-full"
         />
       </form>
 
