@@ -241,7 +241,7 @@ export default function LoginPage() {
                 icon={<ChevronsRight className="h-4 w-4" />}
                 disabled={isLoading}
                 loading={isLoading}
-                className="h-11 w-52.5"
+                className="font-poppins h-11 w-52.5 font-semibold text-white"
               />
             </div>
           </form>
