@@ -141,7 +141,12 @@ export default function LoginPage() {
           <form onSubmit={documentForm.handleSubmit(onSubmit)} className="space-y-4">
             <div className="flex w-full gap-5">
               <div className="w-1/3">
-                <Label htmlFor="document_type">Tipo de Documento</Label>
+                <Label
+                  htmlFor="document_type"
+                  className="font-poppins text-label-inputs pl-2 text-sm font-semibold"
+                >
+                  Tipo de Documento*
+                </Label>
                 <Select
                   value={documentType}
                   onValueChange={(value) => documentForm.setValue("document_type", value)}
@@ -161,7 +166,12 @@ export default function LoginPage() {
               </div>
 
               <div className="w-2/3">
-                <Label htmlFor="identifier">Número de Documento</Label>
+                <Label
+                  htmlFor="identifier"
+                  className="font-poppins text-label-inputs pl-2 text-sm font-semibold"
+                >
+                  Número de Documento*
+                </Label>
                 <Input
                   id="identifier"
                   type="text"
@@ -181,22 +191,36 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <Label htmlFor="password">Contraseña</Label>
+              <Label
+                htmlFor="password"
+                className="font-poppins text-label-inputs pl-2 text-sm font-semibold"
+              >
+                Contraseña*
+              </Label>
               <div className="relative">
+                <img
+                  src="/icon-padlock.svg"
+                  alt="icon-padlock"
+                  className="absolute top-1/2 left-4.75 -translate-y-1/2 transform"
+                />
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
                   {...documentForm.register("password", { required: "La contraseña es requerida" })}
                   disabled={isLoading}
                   placeholder="Tu contraseña"
-                  className={`pr-10 ${documentForm.formState.errors.password ? "border-red-500" : ""}`}
+                  className={`px-11.75 ${documentForm.formState.errors.password ? "border-red-positiva" : ""}`}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute top-1/2 right-3 -translate-y-1/2 transform text-gray-400 hover:text-gray-600"
                 >
-                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  <img
+                    src={showPassword ? "/icon-eye-hide.svg" : "/icon-eye-show.svg"}
+                    alt="icon-mail"
+                    className=""
+                  />
                 </button>
               </div>
               {documentForm.formState.errors.password && (
