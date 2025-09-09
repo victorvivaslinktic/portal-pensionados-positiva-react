@@ -151,7 +151,7 @@ export default function TwoFAPage() {
       }
       subtitle="Por favor ingresa el código de verificación enviado a tu correo electrónico"
     >
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center space-y-6">
         <div className="space-y-4">
           <div className="flex justify-center">
             <InputOTP
@@ -162,12 +162,12 @@ export default function TwoFAPage() {
               className="max-w-[486px] gap-[30px]"
             >
               <InputOTPGroup className="gap-2 md:gap-[30px]">
-                <InputOTPSlot index={0} />
-                <InputOTPSlot index={1} />
-                <InputOTPSlot index={2} />
-                <InputOTPSlot index={3} />
-                <InputOTPSlot index={4} />
-                <InputOTPSlot index={5} />
+                <InputOTPSlot index={0} className="font-roboto" />
+                <InputOTPSlot index={1} className="font-roboto" />
+                <InputOTPSlot index={2} className="font-roboto" />
+                <InputOTPSlot index={3} className="font-roboto" />
+                <InputOTPSlot index={4} className="font-roboto" />
+                <InputOTPSlot index={5} className="font-roboto" />
               </InputOTPGroup>
             </InputOTP>
           </div>
@@ -185,9 +185,10 @@ export default function TwoFAPage() {
         <CustomButton
           type="submit"
           name="Validar Código"
-          icon={<Image src="/botton-icon.svg" alt="icon" width={20} height={20} />}
+          icon={<Image src="/botton-icon.svg" alt="icon" width={18} height={18} />}
           disabled={isLoading || !code || code.length !== 6 || timeLeft === 0}
           loading={isLoading}
+          iconPosition="right"
         />
       </form>
 
@@ -195,7 +196,7 @@ export default function TwoFAPage() {
         <button
           onClick={handleResend}
           disabled={isResending}
-          className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-medium hover:underline disabled:opacity-50"
+          className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-bold hover:underline disabled:opacity-50"
         >
           <RotateCcw className={`h-4 w-4 ${isResending ? "animate-spin" : ""}`} />
           <span>{isResending ? "Reenviando..." : "Reenviar código"}</span>
@@ -205,9 +206,9 @@ export default function TwoFAPage() {
       <div className="mt-6 text-center">
         <button
           onClick={handleBack}
-          className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-medium hover:underline"
+          className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-bold hover:underline"
         >
-          <ArrowLeft className="h-4 w-4" />
+          <Image src="/arrow-positiva.svg" alt="icon" width={18} height={18} />
           <span>Volver al inicio de sesión</span>
         </button>
       </div>
