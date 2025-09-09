@@ -230,15 +230,17 @@ export default function LoginPage() {
               )}
             </div>
 
-            <CustomButton
-              type="submit"
-              name="Ingresar"
-              iconPosition="right"
-              icon={<ChevronsRight className="h-4 w-4" />}
-              disabled={isLoading}
-              loading={isLoading}
-              className="w-full"
-            />
+            <div className="flex w-full justify-center">
+              <CustomButton
+                type="submit"
+                name="Ingresar"
+                iconPosition="right"
+                icon={<ChevronsRight className="h-4 w-4" />}
+                disabled={isLoading}
+                loading={isLoading}
+                className="h-11 w-52.5"
+              />
+            </div>
           </form>
         </TabsContent>
 
