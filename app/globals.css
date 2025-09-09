@@ -28,6 +28,8 @@
   --color-chart-1: var(--chart-1);
   --color-ring: var(--ring);
   --color-input: var(--input);
+  --color-label-inputs: var(--custom-color-label-inputs);
+  --color-red-positiva: var(--custom-color-red-positiva);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
@@ -56,6 +58,8 @@
   --accent-positiva: #ee7d30;
   --navy-primary: #173748;
   --navy-secondary: #123249;
+  --custom-color-label-inputs: #5D6977;
+  --custom-color-red-positiva: #E60003;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
