@@ -27,9 +27,7 @@ export function AuthCard({ children, title, subtitle }: AuthCardProps) {
 
       {title && (
         <div className="mb-3.75 text-center">
-          <h1 className="font-poppins text-navy-primary text-2xl font-bold sm:text-[32px]">
-            {title}
-          </h1>
+          <h1 className="text-navy-primary text-2xl font-bold sm:text-[32px]">{title}</h1>
         </div>
       )}
 

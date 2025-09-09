@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -93,7 +93,9 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
-
+body {
+  font-family: var(--custom-font-poppins), sans-serif;
+}
 .dark {
   --primary-positiva: #ff7500;
   --accent-positiva: #ee7d30;
@@ -140,8 +142,8 @@
     @apply bg-background text-foreground;
   }
 }
-
-.poppins-thin {
+tailwind.config.csstailwind.config.csstailwind.config.css
+/*.poppins-thin {
   font-family: "Poppins", sans-serif;
   font-weight: 100;
   font-style: normal;
@@ -247,7 +249,7 @@
   font-family: "Poppins", sans-serif;
   font-weight: 900;
   font-style: italic;
-}
+}*/
 
 body {
   font-family: "Poppins", sans-serif;
