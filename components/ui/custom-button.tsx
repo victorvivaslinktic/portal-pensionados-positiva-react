@@ -104,7 +104,7 @@ export const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProp
         );
       }
 
-      const iconElement = icon && <span className="ml-2">{icon}</span>;
+      const iconElement = icon && <span>{icon}</span>;
 
       if (children) {
         return children;

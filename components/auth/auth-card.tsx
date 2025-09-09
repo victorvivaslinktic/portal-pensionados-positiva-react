@@ -12,8 +12,8 @@ interface AuthCardProps {
 
 export function AuthCard({ children, title, subtitle }: AuthCardProps) {
   return (
-    <div className="mx-auto w-full max-w-2xl rounded-xl bg-white px-6 py-8 shadow-lg sm:px-12">
-      <div className="mb-6 flex justify-center">
+    <div className="mx-auto w-full max-w-[644px] rounded-[30px] bg-white px-6 py-8 shadow-lg sm:px-10">
+      <div className="mb-7.5 flex justify-center">
         <div className="relative h-20 w-20 sm:h-30 sm:w-30">
           <Image
             src={PositivaLogo.src}
@@ -32,7 +32,7 @@ export function AuthCard({ children, title, subtitle }: AuthCardProps) {
       )}
 
       {subtitle && (
-        <div className="mb-6 text-center">
+        <div className="mb-7.5 text-center">
           <p className="text-sm text-gray-600 sm:text-base">{subtitle}</p>
         </div>
       )}
