@@ -162,12 +162,12 @@ export default function TwoFAPage() {
               className="max-w-[486px] gap-[30px]"
             >
               <InputOTPGroup className="gap-2 md:gap-[30px]">
-                <InputOTPSlot index={0} className="font-roboto" />
-                <InputOTPSlot index={1} className="font-roboto" />
-                <InputOTPSlot index={2} className="font-roboto" />
-                <InputOTPSlot index={3} className="font-roboto" />
-                <InputOTPSlot index={4} className="font-roboto" />
-                <InputOTPSlot index={5} className="font-roboto" />
+                <InputOTPSlot index={0} />
+                <InputOTPSlot index={1} />
+                <InputOTPSlot index={2} />
+                <InputOTPSlot index={3} />
+                <InputOTPSlot index={4} />
+                <InputOTPSlot index={5} />
               </InputOTPGroup>
             </InputOTP>
           </div>

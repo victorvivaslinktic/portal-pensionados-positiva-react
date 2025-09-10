@@ -21,9 +21,9 @@ function InputOTP({
       inputMode="numeric"
       pattern="[0-9]*"
       onChange={(value) => {
-        const numericValue = value.replace(/\D/g, ""); // 🔒 elimina todo lo que no sea número
+        const numericValue = value.replace(/\D/g, "");
         if (onChange) {
-          onChange(numericValue); // 👈 pasamos el valor filtrado al padre
+          onChange(numericValue);
         }
       }}
       {...props}
@@ -51,13 +51,14 @@ function InputOTPSlot({
     <div
       data-slot="input-otp-slot"
       data-active={isActive}
+      data-filled={!!char}
       className={cn(
-        "font-poppins relative flex h-[56px] w-[55px] items-center justify-center rounded-md border-2 text-sm shadow-xs transition-all outline-none",
+        "font-poppins relative flex h-[3em] w-[3em] items-center justify-center rounded-md border-2 text-sm shadow-xs transition-all outline-none md:h-[56px] md:w-[55px]",
 
         "data-[active=true]:border-[var(--primary-positiva)] data-[active=true]:ring-1 data-[active=true]:ring-orange-500",
 
         "aria-invalid:border-destructive data-[active=true]:aria-invalid:border-destructive data-[active=true]:aria-invalid:ring-destructive/20 dark:data-[active=true]:aria-invalid:ring-destructive/40",
-        "dark:bg-input/30 border-input",
+        "dark:bg-input/30 border-input font-roboto text-[#313131;] text-center text-sm font-semibold md:text-lg",
         className
       )}
       {...props}
