@@ -154,7 +154,7 @@ export default function RecoverPage() {
       <div className="mt-5 flex w-full flex-col items-center justify-center gap-5 text-center">
         <button
           onClick={handleBack}
-          className="text-primary-positiva font-poppins flex items-center justify-center gap-2 text-lg font-bold hover:underline"
+          className="text-primary-positiva font-roboto flex items-center justify-center gap-2 text-lg font-bold hover:underline"
         >
           {/* <ArrowLeft className="h-4 w-4" /> */}
           <img src="/icon-arrow-left.svg" alt="" className="h-3.5 w-4.5" />

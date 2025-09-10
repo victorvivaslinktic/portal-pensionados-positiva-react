@@ -33,7 +33,7 @@ export function AuthCard({ children, title, subtitle }: AuthCardProps) {
 
       {subtitle && (
         <div className="mb-7.5 text-center">
-          <p className="text-sm text-gray-600 sm:text-base">{subtitle}</p>
+          <p className="font-roboto text-sm text-gray-600 sm:text-base">{subtitle}</p>
         </div>
       )}
 
