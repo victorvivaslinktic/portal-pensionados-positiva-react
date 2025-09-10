@@ -276,10 +276,33 @@ li.toast-info.toatsStyle:before {
   max-width: 1200px;
   margin: auto;
 }
-
+.ulModalLogin {
+  flex-direction: row !important;
+  gap: 42px !important;
+  width: 100% !important;
+  margin: auto;
+  display: flex !important;
+  margin-left: 3em;
+}
+.liModalLogin {
+  list-style-type: disc;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--navy-primary);
+}
 @media (max-width: 1200px) {
   .containerMaxWidth {
     padding: 0 50px;
+  }
+}
+@media (max-width: 1024px) {
+  .ulModalLogin {
+    gap: 5px !important;
+    flex-wrap: wrap;
+    margin-left: 0;
+    flex-direction: column !important;
+    margin-left: 2em;
   }
 }
 @media (max-width: 768px) {

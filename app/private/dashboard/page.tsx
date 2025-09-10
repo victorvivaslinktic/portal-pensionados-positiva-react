@@ -96,25 +96,27 @@ export default function DashboardPage() {
         );
         setSuccessGridContent(
           <>
-            <div>
-              <ul>
-                <p className="font-roboto mt-4 text-center text-sm leading-6 font-semibold text-[var(--navy-primary)]">
-                  Línea de atención nacional: <br />
-                  <span className="cursor-pointer font-semibold text-[var(--primary-positiva)] underline">
-                    01 8000 11 1170
-                  </span>
-                </p>
-              </ul>
-            </div>
-            <div>
-              <ul>
-                <p className="font-roboto mt-4 text-center text-sm leading-6 font-semibold text-[var(--navy-primary)]">
-                  Línea de atención en Bogotá: <br />
-                  <span className="cursor-pointer text-[var(--primary-positiva)] underline">
-                    (+57) 601 3307000
-                  </span>
-                </p>
-              </ul>
+            <div className="mt-6 grid grid-cols-2 gap-4">
+              <div>
+                <ul>
+                  <p className="font-roboto mt-4 text-center text-sm leading-6 font-semibold text-[var(--navy-primary)]">
+                    Línea de atención nacional: <br />
+                    <span className="cursor-pointer font-semibold text-[var(--primary-positiva)] underline">
+                      01 8000 11 1170
+                    </span>
+                  </p>
+                </ul>
+              </div>
+              <div>
+                <ul>
+                  <p className="font-roboto mt-4 text-center text-sm leading-6 font-semibold text-[var(--navy-primary)]">
+                    Línea de atención en Bogotá: <br />
+                    <span className="cursor-pointer text-[var(--primary-positiva)] underline">
+                      (+57) 601 3307000
+                    </span>
+                  </p>
+                </ul>
+              </div>
             </div>
           </>
         );
