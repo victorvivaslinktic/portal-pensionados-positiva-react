@@ -15,6 +15,7 @@ import { useAuthStore } from "@/lib/stores/auth.store";
 import { usePasswordValidation } from "@/lib/hooks/use-password-validation";
 import { generateSecurePassword } from "@/lib/utils/generate-password";
 import Image from "next/image";
+import IconReload from "@/public/icon-reload.svg";
 
 export default function ResetPage() {
   const router = useRouter();
@@ -307,7 +308,7 @@ export default function ResetPage() {
             className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-bold hover:underline"
           >
             <Image
-              src="/icon-reload.svg"
+              src={IconReload.src}
               alt="icon"
               width={18}
               height={18}

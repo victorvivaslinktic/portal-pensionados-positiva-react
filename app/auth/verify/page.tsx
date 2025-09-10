@@ -11,6 +11,8 @@ import { Label } from "@/components/ui/label";
 import { userService } from "@/lib/services/user.service";
 import { useAuthStore } from "@/lib/stores/auth.store";
 import { toast } from "@/lib/stores/toast-store";
+import Image from "next/image";
+import IconArrowLeft from "@/public/icon-arrow-left.svg";
 
 type VerifyFormData = {
   identifier: string;
@@ -117,7 +119,7 @@ export default function VerifyPage() {
           className="text-primary-positiva font-poppins flex items-center justify-center gap-2 text-lg font-bold hover:underline"
         >
           {/* <ArrowLeft className="h-4 w-4" /> */}
-          <img src="/icon-arrow-left.svg" alt="" className="h-3.5 w-4.5" />
+          <Image src={IconArrowLeft.src} alt="" className="h-3.5 w-4.5" width={18} height={18} />
           <span>Volver al inicio de sesión</span>
         </button>
       </div>

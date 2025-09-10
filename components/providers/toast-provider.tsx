@@ -4,6 +4,10 @@ import { useEffect, useRef } from "react";
 import { toast as sonnerToast } from "sonner";
 import { useToastStore } from "@/lib/stores/toast-store";
 import Image from "next/image";
+import IconSuccess from "@/public/success-icon.svg";
+import IconError from "@/public/error-icon.svg";
+import IconX from "@/public/equis.svg";
+import IconWarning from "@/public/warning-icon.svg";
 
 export function ToastProvider() {
   const { toasts, removeToast } = useToastStore();
@@ -23,7 +27,7 @@ export function ToastProvider() {
               duration: toast.duration,
               icon: (
                 <Image
-                  src="/success-icon.svg"
+                  src={IconSuccess.src}
                   width={22}
                   height={22}
                   alt="icono custom"
@@ -38,7 +42,7 @@ export function ToastProvider() {
               action: {
                 label: (
                   <Image
-                    src="/equis.svg"
+                    src={IconX.src}
                     width={18}
                     height={18}
                     alt="equis"
@@ -58,7 +62,7 @@ export function ToastProvider() {
               duration: toast.duration,
               icon: (
                 <Image
-                  src="/error-icon.svg"
+                  src={IconError.src}
                   width={24}
                   height={22}
                   alt="icono custom"
@@ -73,7 +77,7 @@ export function ToastProvider() {
               action: {
                 label: (
                   <Image
-                    src="/equis.svg"
+                    src={IconX.src}
                     width={18}
                     height={18}
                     alt="equis"
@@ -97,7 +101,7 @@ export function ToastProvider() {
               },
               icon: (
                 <Image
-                  src="/warning-icon.svg"
+                  src={IconWarning.src}
                   width={24}
                   height={24}
                   alt="icono custom"
@@ -108,7 +112,7 @@ export function ToastProvider() {
               action: {
                 label: (
                   <Image
-                    src="/equis.svg"
+                    src={IconX.src}
                     width={18}
                     height={18}
                     alt="equis"
@@ -132,7 +136,7 @@ export function ToastProvider() {
               },
               icon: (
                 <Image
-                  src="/warning-icon.svg"
+                  src={IconWarning.src}
                   width={24}
                   height={24}
                   alt="icono custom"
@@ -143,7 +147,7 @@ export function ToastProvider() {
               action: {
                 label: (
                   <Image
-                    src="/equis.svg"
+                    src={IconX.src}
                     width={18}
                     height={18}
                     alt="equis"

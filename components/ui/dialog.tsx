@@ -5,6 +5,7 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import IconClose from "@/public/close-button.svg";
 
 function Dialog({ ...props }: React.ComponentProps<typeof DialogPrimitive.Root>) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />;
@@ -63,7 +64,7 @@ function DialogContent({
             data-slot="dialog-close"
             className="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-10"
           >
-            <Image src="/close-button.svg" width={33} height={33} alt="close button" />
+            <Image src={IconClose.src} width={33} height={33} alt="close button" loading="lazy" />
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
         )}

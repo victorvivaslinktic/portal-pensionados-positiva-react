@@ -11,6 +11,9 @@ import { Label } from "@/components/ui/label";
 import { userService } from "@/lib/services/user.service";
 import { toast } from "@/lib/stores/toast-store";
 import { useAuthStore } from "@/lib/stores/auth.store";
+import Image from "next/image";
+import IconReload from "@/public/icon-reload.svg";
+import IconArrowLeft from "@/public/icon-arrow-left.svg";
 
 type VerifyConfirmFormData = {
   token: string;
@@ -143,8 +146,8 @@ export default function VerifyConfirmPage() {
           className="text-primary-positiva font-poppins flex items-center justify-center gap-2 text-lg font-bold hover:underline"
         >
           {/* <RotateCcw className={`h-4 w-4 ${isResending ? "animate-spin" : ""}`} /> */}
-          <img
-            src="/icon-reload.svg"
+          <Image
+            src={IconReload.src}
             alt=""
             className={`h-4 w-4 ${isResending ? "animate-spin" : ""}`}
           />
@@ -158,7 +161,7 @@ export default function VerifyConfirmPage() {
           className="text-primary-positiva font-poppins flex items-center justify-center gap-2 text-lg font-bold hover:underline"
         >
           {/* <ArrowLeft className="h-4 w-4" /> */}
-          <img src="/icon-arrow-left.svg" alt="" className="h-3.5 w-4.5" />
+          <Image src={IconArrowLeft.src} alt="" className="h-3.5 w-4.5" width={18} height={18} />
           <span>Volver</span>
         </button>
       </div>

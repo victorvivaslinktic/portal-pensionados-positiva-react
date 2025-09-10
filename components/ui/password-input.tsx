@@ -5,6 +5,9 @@ import { Check, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PasswordValidation } from "@/lib/hooks/use-password-validation";
+import IconEyeShow from "@/public/icon-eye-show.svg";
+import IconEyehide from "@/public/icon-eye-hide.svg";
+import IconPadLock from "@/public/icon-padlock.svg";
 
 interface PasswordInputProps {
   id: string;
@@ -78,7 +81,7 @@ export function PasswordInput({
       <Label htmlFor={id}>{label}</Label>
       <div className="relative">
         <img
-          src="/icon-padlock.svg"
+          src={IconPadLock}
           alt="icon-padlock"
           className="absolute top-1/2 left-4.75 -translate-y-1/2 transform"
         />
@@ -106,11 +109,7 @@ export function PasswordInput({
             onClick={() => setShowPassword(!showPassword)}
             className="text-gray-400 hover:text-gray-600"
           >
-            <img
-              src={showPassword ? "/icon-eye-hide.svg" : "/icon-eye-show.svg"}
-              alt="icon-mail"
-              className=""
-            />
+            <img src={showPassword ? IconEyehide : IconEyeShow} alt="icon-mail" className="" />
           </button>
         </div>
       </div>

@@ -19,6 +19,8 @@ import { passwordService } from "@/lib/services/password.service";
 import { toast } from "@/lib/stores/toast-store";
 import { useAuthStore } from "@/lib/stores/auth.store";
 import { DOCUMENT_TYPES } from "@/lib/types/auth.types";
+import Image from "next/image";
+import IconArrowLeft from "@/public/icon-arrow-left.svg";
 
 type RecoverFormData = {
   document_type: string;
@@ -143,7 +145,6 @@ export default function RecoverPage() {
             name="Enviar Código"
             iconPosition="right"
             icon={<ChevronsRight className="h-4 w-4" />}
-            // icon={<Image src="/botton-icon.svg" alt="icon" width={20} height={20} />}
             disabled={isLoading}
             loading={isLoading}
             className="font-poppins border-primary-positiva h-11 w-52.5 gap-2 border py-3 font-semibold text-white"
@@ -156,8 +157,14 @@ export default function RecoverPage() {
           onClick={handleBack}
           className="text-primary-positiva font-poppins flex items-center justify-center gap-2 text-lg font-bold hover:underline"
         >
-          {/* <ArrowLeft className="h-4 w-4" /> */}
-          <img src="/icon-arrow-left.svg" alt="" className="h-3.5 w-4.5" />
+          <Image
+            src={IconArrowLeft.src}
+            alt=""
+            className="h-3.5 w-4.5"
+            width={18}
+            height={18}
+            loading="lazy"
+          />
           <span>Volver al inicio de sesión</span>
         </button>
       </div>

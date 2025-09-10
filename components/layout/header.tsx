@@ -8,6 +8,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { redirections } from "@/lib/utils/redirections";
 import LogoHeader from "@/public/positiva-header-logo.svg";
 import { Icon } from "@/components/ui/icon";
+import IconMenu from "@/public/sprite-icons-menu.svg";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -17,7 +18,7 @@ export function Header() {
   };
 
   const getIcon = (iconName: string) => {
-    return <Icon name={iconName} className="h-8 w-8.75" spritePath="/sprite-icons-menu.svg" />;
+    return <Icon name={iconName} className="h-8 w-8.75" spritePath={IconMenu.src} />;
     //   switch (iconName) {
     //     case "HardHat":
     //       return <HardHat className="h-4 w-4" />;
