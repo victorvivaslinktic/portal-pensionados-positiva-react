@@ -6,7 +6,7 @@ import { CustomButton } from "@/components/ui/custom-button";
 import { ChevronsRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import ImagePage from "@/public/thank-you-image.svg";
+import ImagePage from "@/public/image-thankyou.svg";
 
 export default function ThankYouPage() {
   const router = useRouter();
@@ -18,7 +18,7 @@ export default function ThankYouPage() {
     <AuthCard
           title={
             <>
-              Cambio de <span className="text-orange-500">contraseña exitoso</span>
+              Cambio de <span className="text-primary-positiva">contraseña exitoso</span>
             </>
           }
         >

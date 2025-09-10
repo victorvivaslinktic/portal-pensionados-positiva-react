@@ -71,7 +71,7 @@ export default function VerifyPage() {
     <AuthCard
       title={
         <>
-          Código de <span className="text-orange-500">verificación</span>
+          Código de <span className="text-primary-positiva">verificación</span>
         </>
       }
       subtitle="Ingresa tu correo electrónico para enviar el código de verificación"

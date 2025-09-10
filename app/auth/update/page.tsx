@@ -89,7 +89,7 @@ export default function UpdatePage() {
     <AuthCard
       title={
         <>
-          Actualizar <span className="text-orange-500">información</span>
+          Actualizar <span className="text-primary-positiva">información</span>
         </>
       }
       subtitle="Por favor actualiza tu información personal para continuar"

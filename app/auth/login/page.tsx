@@ -179,7 +179,8 @@ export default function LoginPage() {
       title={
         <>
           <span>
-            Bienvenido al <span className="font-bold text-orange-500">Portal Pensionados</span>
+            Bienvenido al{" "}
+            <span className="text-primary-positiva font-bold">Portal Pensionados</span>
           </span>
         </>
       }

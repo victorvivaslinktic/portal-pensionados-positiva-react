@@ -35,7 +35,7 @@ export const CardCertificado = ({
         </div>
         <h3 className="text-lg font-semibold text-[#173748]">
           {title}
-          <div className="mt-2 w-12 rounded-full bg-orange-500 py-[2px]"></div>
+          <div className="bg-primary-positiva mt-2 w-12 rounded-full py-[2px]"></div>
         </h3>
         {description && <p className="font-roboto mt-3 text-xs text-gray-600">{description}</p>}
         {extra && <div className="mt-3">{extra}</div>}

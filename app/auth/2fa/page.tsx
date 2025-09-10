@@ -154,7 +154,7 @@ export default function TwoFAPage() {
     <AuthCard
       title={
         <>
-          Código de <span className="text-orange-500">verificación</span>
+          Código de <span className="text-primary-positiva">verificación</span>
         </>
       }
       subtitle="Por favor ingresa el código de verificación enviado a tu correo electrónico"

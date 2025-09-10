@@ -159,7 +159,7 @@ export default function ResetPage() {
     <AuthCard
       title={
         <>
-          Nueva <span className="text-orange-500">contraseña</span>
+          Nueva <span className="text-primary-positiva">contraseña</span>
         </>
       }
       subtitle="Crea una nueva contraseña o puedes generar una"

@@ -84,7 +84,7 @@ export default function RecoverPage() {
     <AuthCard
       title={
         <>
-          Recuperar <span className="text-orange-500">contraseña</span>
+          Recuperar <span className="text-primary-positiva">contraseña</span>
         </>
       }
       subtitle="Ingresa tu tipo y número de documento para recibir el código de recuperación"
