@@ -130,7 +130,7 @@ export default function LoginPage() {
     setSuccessVariant("login");
     setSuccessTitle("¿No tienes cuenta?");
     setSuccessDescription(
-      `Si ya eres afiliado y aún no tienes una cuenta en nuestro Portal de Positiva Pensionados, puedes solicitar la creación de tu cuenta enviando un correo a <a href="mailto:servicioalcliente@positiva.gov.co" class="underline text-[var(--primary-positiva)]" target="_blank">servicioalcliente@positiva.gov.co</a> con el asunto: <b>Creación de Cuenta Portal Positiva Pensionados”,</b> indicando los siguientes datos:
+      `Si ya eres afiliado y aún no tienes una cuenta en nuestro Portal de Positiva Pensionados, puedes solicitar la creación de tu cuenta enviando un correo a <a href="mailto:servicioalcliente@positiva.gov.co" class="underline text-[var(--primary-positiva)]" target="_blank">servicioalcliente@positiva.gov.co</a> con el asunto: <b>Creación de Cuenta Portal Positiva Pensionados”,</b> indicando los siguientes datos:
       <br><br> 
       <ul class="ulModalLogin">
       <li class="liModalLogin">Nombre completo.</li>
