@@ -143,7 +143,7 @@ export default function VerifyConfirmPage() {
         <button
           onClick={handleResend}
           disabled={isResending}
-          className="text-primary-positiva font-poppins flex items-center justify-center gap-2 text-lg font-bold hover:underline"
+          className="text-primary-positiva font-roboto flex items-center justify-center gap-2 text-lg font-bold hover:underline"
         >
           {/* <RotateCcw className={`h-4 w-4 ${isResending ? "animate-spin" : ""}`} /> */}
           <Image
@@ -158,7 +158,7 @@ export default function VerifyConfirmPage() {
       <div className="mt-5 flex w-full flex-col items-center justify-center gap-5 text-center">
         <button
           onClick={handleBack}
-          className="text-primary-positiva font-poppins flex items-center justify-center gap-2 text-lg font-bold hover:underline"
+          className="text-primary-positiva font-roboto flex items-center justify-center gap-2 text-lg font-bold hover:underline"
         >
           {/* <ArrowLeft className="h-4 w-4" /> */}
           <Image src={IconArrowLeft.src} alt="" className="h-3.5 w-4.5" width={18} height={18} />

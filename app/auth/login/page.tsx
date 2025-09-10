@@ -405,13 +405,13 @@ export default function LoginPage() {
       <div className="mt-5 flex flex-col items-center justify-center gap-5 text-center">
         <button
           onClick={handlePasswordReset}
-          className="text-primary-positiva font-poppins text-lg font-bold hover:underline"
+          className="text-primary-positiva font-roboto text-lg font-bold hover:underline"
         >
           ¿Olvidaste tu contraseña?
         </button>
 
-        <p className="font-poppins text-navy-primary text-lg font-bold">
-          ¿No tienes cuenta?
+        <p className="font-roboto text-navy-primary text-lg font-bold">
+          ¿No tienes cuenta?{" "}
           <button onClick={handleModal} className="text-primary-positiva hover:underline">
             Consulta aquí
           </button>

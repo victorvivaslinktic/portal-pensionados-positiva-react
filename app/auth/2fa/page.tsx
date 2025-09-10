@@ -231,7 +231,7 @@ export default function TwoFAPage() {
         <button
           onClick={handleResend}
           disabled={isResending}
-          className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-bold hover:underline disabled:opacity-50"
+          className="text-primary-positiva font-roboto mx-auto flex items-center justify-center space-x-2 font-bold hover:underline disabled:opacity-50"
         >
           <Image src={IconReload.src} alt="icon" width={18} height={18} />
           <span>{isResending ? "Reenviando..." : "Reenviar código"}</span>
@@ -241,7 +241,7 @@ export default function TwoFAPage() {
       <div className="mt-6 text-center">
         <button
           onClick={handleBack}
-          className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-bold hover:underline"
+          className="text-primary-positiva font-roboto mx-auto flex items-center justify-center space-x-2 font-bold hover:underline"
         >
           <Image src={IconArrow.src} alt="icon" width={18} height={18} />
           <span>Volver al inicio de sesión</span>
