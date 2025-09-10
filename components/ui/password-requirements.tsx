@@ -14,34 +14,36 @@ const ValidationIcon = ({ isValid }: { isValid: boolean }) =>
 export function PasswordRequirements({ validation, show = true }: PasswordRequirementsProps) {
   if (!show) return null;
 
+  const hide = !!validation?.isValid; // true cuando cumple todo
+
   return (
-    <div className="mt-2 space-y-1">
+    <div className={`mt-2 space-y-1 ${hide ? "hidden" : "block"}`}>
       <div
-        className={`flex items-center space-x-2 text-sm ${validation.minLength ? "text-green-600" : "text-red-600"}`}
+        className={`flex items-center space-x-2 text-sm ${validation.minLength ? "hidden text-green-600" : "text-red-600"}`}
       >
         <ValidationIcon isValid={validation.minLength} />
         <span>Mínimo 12 caracteres</span>
       </div>
       <div
-        className={`flex items-center space-x-2 text-sm ${validation.hasUppercase ? "text-green-600" : "text-red-600"}`}
+        className={`flex items-center space-x-2 text-sm ${validation.hasUppercase ? "hidden text-green-600" : "text-red-600"}`}
       >
         <ValidationIcon isValid={validation.hasUppercase} />
         <span>Al menos una letra mayúscula</span>
       </div>
       <div
-        className={`flex items-center space-x-2 text-sm ${validation.hasLowercase ? "text-green-600" : "text-red-600"}`}
+        className={`flex items-center space-x-2 text-sm ${validation.hasLowercase ? "hidden text-green-600" : "text-red-600"}`}
       >
         <ValidationIcon isValid={validation.hasLowercase} />
         <span>Al menos una letra minúscula</span>
       </div>
       <div
-        className={`flex items-center space-x-2 text-sm ${validation.hasNumber ? "text-green-600" : "text-red-600"}`}
+        className={`flex items-center space-x-2 text-sm ${validation.hasNumber ? "hidden text-green-600" : "text-red-600"}`}
       >
         <ValidationIcon isValid={validation.hasNumber} />
         <span>Al menos un número</span>
       </div>
       <div
-        className={`flex items-center space-x-2 text-sm ${validation.hasSpecialChar ? "text-green-600" : "text-red-600"}`}
+        className={`flex items-center space-x-2 text-sm ${validation.hasSpecialChar ? "hidden text-green-600" : "text-red-600"}`}
       >
         <ValidationIcon isValid={validation.hasSpecialChar} />
         <span>Al menos un carácter especial</span>

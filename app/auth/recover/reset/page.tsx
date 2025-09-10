@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, ChevronsRight, AlertCircle, RotateCcw } from "lucide-react";
+import { ChevronsRight, AlertCircle, RotateCcw } from "lucide-react";
 import { AuthCard } from "@/components/auth/auth-card";
 import { CustomButton } from "@/components/ui/custom-button";
 import { Input } from "@/components/ui/input";
@@ -13,6 +13,7 @@ import { passwordService } from "@/lib/services/password.service";
 import { toast } from "@/lib/stores/toast-store";
 import { useAuthStore } from "@/lib/stores/auth.store";
 import { usePasswordValidation } from "@/lib/hooks/use-password-validation";
+import { generateSecurePassword } from "@/lib/utils/generate-password";
 
 export default function ResetPage() {
   const router = useRouter();
@@ -131,9 +132,17 @@ export default function ResetPage() {
     }
   };
 
-  const handleBack = () => {
-    router.push("/auth/recover");
+  const handleGeneratePassword = async () => {
+    const newPwd = generateSecurePassword(16); // o 20 si quieres más larga
+    setNewPassword(newPwd);
+    setConfirmPassword(newPwd);
+
+    // await trigger(["password", "confirm_password"]);
   };
+
+  // const handleBack = () => {
+  //   router.push("/auth/recover");
+  // };
 
   const getTokenFieldState = () => {
     if (tokenError) return "error";
@@ -151,7 +160,7 @@ export default function ResetPage() {
           Nueva <span className="text-orange-500">contraseña</span>
         </>
       }
-      subtitle="Ingresa el código de recuperación y tu nueva contraseña"
+      subtitle="Crea una nueva contraseña o puedes generar una"
     >
       {recoveryEmail && (
         <div className="mb-4 rounded-md border border-blue-200 bg-blue-50 p-3">
@@ -161,7 +170,7 @@ export default function ResetPage() {
         </div>
       )}
 
-      <form onSubmit={onSubmit} className="space-y-4">
+      <form onSubmit={onSubmit} className="flex flex-col gap-5">
         <div>
           <Label htmlFor="token">Código de Recuperación</Label>
           <div className="relative">
@@ -220,23 +229,26 @@ export default function ResetPage() {
           )}
         </div>
 
-        <PasswordInput
-          id="newPassword"
-          label="Nueva Contraseña"
-          value={newPassword}
-          onChange={setNewPassword}
-          onBlur={() => setTouched((prev) => ({ ...prev, newPassword: true }))}
-          disabled={isLoading}
-          placeholder="Mínimo 12 caracteres"
-          validation={passwordValidation}
-          touched={touched.newPassword}
-          required
-        />
+        <div className="flex flex-col gap-1">
+          <PasswordInput
+            id="newPassword"
+            label="Nueva Contraseña"
+            className="px-11.75"
+            value={newPassword}
+            onChange={setNewPassword}
+            onBlur={() => setTouched((prev) => ({ ...prev, newPassword: true }))}
+            disabled={isLoading}
+            placeholder="Mínimo 12 caracteres"
+            validation={passwordValidation}
+            touched={touched.newPassword}
+            required
+          />
 
-        <PasswordRequirements
-          validation={passwordValidation}
-          show={touched.newPassword || newPassword.length > 0}
-        />
+          <PasswordRequirements
+            validation={passwordValidation}
+            show={touched.newPassword || newPassword.length > 0}
+          />
+        </div>
 
         <PasswordInput
           id="confirmPassword"
@@ -254,14 +266,34 @@ export default function ResetPage() {
           <p className="mt-1 text-sm text-red-500">Las contraseñas no coinciden</p>
         )}
 
-        <CustomButton
-          type="submit"
-          name={isLoading ? "Restableciendo..." : "Restablecer Contraseña"}
-          icon={<ChevronsRight className="h-4 w-4" />}
-          disabled={isLoading || !tokenValid || !passwordValidation.isValid || !passwordsMatch}
-          loading={isLoading}
-          className="w-full"
-        />
+        <div className="flex w-full justify-center">
+          <div className="max-w-[480px]">
+            <p className="text-custom-gray text-center text-sm">
+              *La contraseña debe ser al menos doce caracteres. Para ser más segura alterna
+              mayúsculas y minúsculas números y símbolos como !”?$_y).
+            </p>
+          </div>
+        </div>
+
+        <div className="flex w-full justify-evenly gap-5">
+          <CustomButton
+            onClick={handleGeneratePassword}
+            name="Generar una constraseña"
+            iconPosition="right"
+            disabled={isLoading}
+            loading={isLoading}
+            className="bg-navy-primary px-7.5 py-3"
+          />
+          <CustomButton
+            type="submit"
+            name={isLoading ? "Restableciendo..." : "Restablecer Contraseña"}
+            iconPosition="right"
+            icon={<ChevronsRight className="h-4 w-4" />}
+            disabled={isLoading || !tokenValid || !passwordValidation.isValid || !passwordsMatch}
+            loading={isLoading}
+            className="px-7.5 py-3"
+          />
+        </div>
       </form>
 
       {recoveryData && (
@@ -277,15 +309,15 @@ export default function ResetPage() {
         </div>
       )}
 
-      <div className="mt-4 text-center">
+      {/* <div className="mt-4 text-center">
         <button
           onClick={handleBack}
           className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-medium hover:underline"
         >
-          <ArrowLeft className="h-4 w-4" />
+          <img src="/icon-arrow-left.svg" alt="" className="h-3.5 w-4.5" />
           <span>Volver</span>
         </button>
-      </div>
+      </div> */}
     </AuthCard>
   );
 }

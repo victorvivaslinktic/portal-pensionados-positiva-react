@@ -29,6 +29,11 @@
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-label-inputs: var(--custom-color-label-inputs);
+  --color-custom-color-green-state: var(--custom-color-green-state);
+  --color-custom-color-yellow-state: var(--custom-color-yellow-state);
+  --color-custom-color-red-state: var(--custom-color-red-state);
+  --color-custom-gray: var(--custom-color-gray);
+  --color-custom-gray-border-inputs: var(--custom-gray-border-inputs);
   --color-red-positiva: var(--custom-color-red-positiva);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
@@ -59,8 +64,13 @@
   --accent-positiva: #ee7d30;
   --navy-primary: #173748;
   --navy-secondary: #123249;
+  --custom-color-gray: #747474;
   --custom-color-label-inputs: #5d6977;
+  --custom-gray-border-inputs: #D9DCE3;
   --custom-color-red-positiva: #e60003;
+  --custom-color-green-state: #D0F3CD;
+  --custom-color-yellow-state: #FCE9B8;
+  --custom-color-red-state: #FDC8C9;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

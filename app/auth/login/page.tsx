@@ -60,6 +60,7 @@ export default function LoginPage() {
     setIsLoading(true);
 
     let loginDataAdapted;
+    console.log(data);
     if (activeTab === "email") {
       loginDataAdapted = {
         identifier: (data as EmailLoginFormData).email,

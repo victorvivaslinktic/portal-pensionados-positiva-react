@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { ArrowLeft, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { AuthCard } from "@/components/auth/auth-card";
 import { CustomButton } from "@/components/ui/custom-button";
 import { Input } from "@/components/ui/input";
@@ -99,22 +99,25 @@ export default function VerifyPage() {
           )}
         </div>
 
-        <CustomButton
-          type="submit"
-          name="Enviar Código"
-          icon={<Mail className="h-4 w-4" />}
-          disabled={isLoading}
-          loading={isLoading}
-          className="w-full"
-        />
+        <div className="flex w-full justify-center">
+          <CustomButton
+            type="submit"
+            name="Enviar Código"
+            icon={<Mail className="h-4 w-4" />}
+            disabled={isLoading}
+            loading={isLoading}
+            className="font-poppins border-primary-positiva h-11 w-52.5 gap-2 border py-3 font-semibold text-white"
+          />
+        </div>
       </form>
 
-      <div className="mt-6 text-center">
+      <div className="mt-5 flex w-full flex-col items-center justify-center gap-5 text-center">
         <button
           onClick={handleBack}
-          className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-medium hover:underline"
+          className="text-primary-positiva font-poppins flex items-center justify-center gap-2 text-lg font-bold hover:underline"
         >
-          <ArrowLeft className="h-4 w-4" />
+          {/* <ArrowLeft className="h-4 w-4" /> */}
+          <img src="/icon-arrow-left.svg" alt="" className="h-3.5 w-4.5" />
           <span>Volver al inicio de sesión</span>
         </button>
       </div>
