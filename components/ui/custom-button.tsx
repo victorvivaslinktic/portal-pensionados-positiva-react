@@ -127,11 +127,7 @@ export const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProp
       <ShadcnButton
         ref={ref}
         variant={getVariant()}
-        className={cn(
-          "inline-flex w-auto items-center rounded-[7px] px-[62px] py-[12px]",
-          getClassName(),
-          className
-        )}
+        className={cn("inline-flex w-auto items-center rounded-[7px]", getClassName(), className)}
         disabled={isDisabled || isLoading}
         onClick={handleClick}
         {...props}

@@ -53,6 +53,7 @@ export default function LoginPage() {
     setIsLoading(true);
 
     let loginDataAdapted;
+    console.log(data);
     if (activeTab === "email") {
       loginDataAdapted = {
         identifier: (data as EmailLoginFormData).email,
@@ -287,10 +288,10 @@ export default function LoginPage() {
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
-                  {...documentForm.register("password", { required: "La contraseña es requerida" })}
+                  {...emailForm.register("password", { required: "La contraseña es requerida" })}
                   disabled={isLoading}
                   placeholder="Tu contraseña"
-                  className={`px-11.75 ${documentForm.formState.errors.password ? "border-red-positiva" : ""}`}
+                  className={`px-11.75 ${emailForm.formState.errors.password ? "border-red-positiva" : ""}`}
                 />
                 <button
                   type="button"

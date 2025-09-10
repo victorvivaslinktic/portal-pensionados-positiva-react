@@ -12,7 +12,7 @@ interface AuthCardProps {
 
 export function AuthCard({ children, title, subtitle }: AuthCardProps) {
   return (
-    <div className="mx-auto w-full max-w-[644px] rounded-[30px] bg-white px-6 py-8 shadow-lg sm:px-10">
+    <div className="mx-auto w-full max-w-[644px] rounded-[30px] bg-white px-6 py-8 shadow-lg md:p-10">
       <div className="mb-7.5 flex justify-center">
         <div className="relative h-20 w-20 sm:h-30 sm:w-30">
           <Image

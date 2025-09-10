@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Eye, EyeOff, Check, X } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PasswordValidation } from "@/lib/hooks/use-password-validation";
@@ -47,10 +47,41 @@ export function PasswordInput({
 
   const fieldState = getFieldState();
 
+  // Cuenta criterios cumplidos (5 en total)
+  const met = validation
+    ? [
+        validation.minLength,
+        validation.hasUppercase,
+        validation.hasLowercase,
+        validation.hasNumber,
+        validation.hasSpecialChar,
+      ].filter(Boolean).length
+    : 0;
+
+  // Reglas: <2 => Baja, 2-4 => Media, 5 => Fuerte
+  const strengthLabel = met === 5 ? "Fuerte" : met >= 2 ? "Media" : "Baja";
+
+  const percent = Math.round((met / 5) * 100); // 0,20,40,60,80,100
+
+  const palette =
+    strengthLabel === "Fuerte"
+      ? { fill: "bg-custom-color-green-state" }
+      : strengthLabel === "Media"
+        ? { fill: "bg-custom-color-yellow-state" }
+        : { fill: "bg-custom-color-red-state" };
+
+  // Mostrar barra solo si hay algo escrito (o usa `touched` si prefieres)
+  const showStrength = Boolean(value?.length) && Boolean(validation);
+
   return (
     <div>
       <Label htmlFor={id}>{label}</Label>
       <div className="relative">
+        <img
+          src="/icon-padlock.svg"
+          alt="icon-padlock"
+          className="absolute top-1/2 left-4.75 -translate-y-1/2 transform"
+        />
         <Input
           id={id}
           type={showPassword ? "text" : "password"}
@@ -60,7 +91,7 @@ export function PasswordInput({
           disabled={disabled}
           placeholder={placeholder}
           required={required}
-          className={`mt-2 w-full pr-16 ${
+          className={`mt-2 w-full px-11.75 ${
             fieldState === "invalid"
               ? "border-red-500 focus:ring-red-500"
               : fieldState === "valid"
@@ -75,10 +106,35 @@ export function PasswordInput({
             onClick={() => setShowPassword(!showPassword)}
             className="text-gray-400 hover:text-gray-600"
           >
-            {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            <img
+              src={showPassword ? "/icon-eye-hide.svg" : "/icon-eye-show.svg"}
+              alt="icon-mail"
+              className=""
+            />
           </button>
         </div>
       </div>
+      {showStrength && (
+        <div className="flex w-full justify-center px-2">
+          <div className="border-custom-gray-border-inputs w-full rounded-b-lg border border-t-0 p-0.75">
+            <div className={`relative h-6 rounded-md bg-white`}>
+              {/* Relleno de progreso */}
+              <div
+                className={`absolute top-0 left-0 h-full rounded-md transition-[width] duration-300 ease-out ${palette.fill}`}
+                style={{ width: `${percent}%` }}
+              >
+                {/* Etiqueta a la derecha */}
+                <span
+                  className={`text-label-inputs absolute inset-y-0 right-2 flex items-center text-sm font-semibold`}
+                  aria-live="polite"
+                >
+                  {strengthLabel}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
