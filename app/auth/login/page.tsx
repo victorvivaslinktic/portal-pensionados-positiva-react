@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { Eye, EyeOff, ChevronsRight } from "lucide-react";
+import { ChevronsRight } from "lucide-react";
 import { AuthCard } from "@/components/auth/auth-card";
 import { CustomButton } from "@/components/ui/custom-button";
 import { Input } from "@/components/ui/input";
@@ -20,6 +20,7 @@ import { authService } from "@/lib/services/auth.service";
 import { useAuthStore } from "@/lib/stores/auth.store";
 import { toast } from "@/lib/stores/toast-store";
 import { DOCUMENT_TYPES } from "@/lib/types/auth.types";
+import { SuccessDialog } from "@/components/ui/success-dialog";
 
 type DocumentLoginFormData = {
   document_number: string;
@@ -39,6 +40,12 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [successOpen, setSuccessOpen] = useState(false);
+  const [successTitle, setSuccessTitle] = useState<string>("");
+  const [successDescription, setSuccessDescription] = useState<string>("");
+  const [successVariant, setSuccessVariant] = useState<"success" | "error" | "login">("success");
+  const [successGridContent, setSuccessGridContent] = useState<React.ReactNode | null>(null);
+
   const documentForm = useForm<DocumentLoginFormData>({
     defaultValues: {
       document_type: "CC",
@@ -53,6 +60,7 @@ export default function LoginPage() {
     setIsLoading(true);
 
     let loginDataAdapted;
+    console.log(data);
     if (activeTab === "email") {
       loginDataAdapted = {
         identifier: (data as EmailLoginFormData).email,
@@ -116,17 +124,72 @@ export default function LoginPage() {
     router.push("/auth/recover");
   };
 
+  const handleModal = (e?: React.MouseEvent) => {
+    e?.preventDefault();
+
+    setSuccessVariant("login");
+    setSuccessTitle("¿No tienes cuenta?");
+    setSuccessDescription(
+      `Si ya eres afiliado y aún no tienes una cuenta en nuestro Portal de Positiva Pensionados, puedes solicitar la creación de tu cuenta enviando un correo a <a href="mailto:servicioalcliente@positiva.gov.co" class="underline text-[var(--primary-positiva)]" target="_blank">servicioalcliente@positiva.gov.co</a> con el asunto: <b>Creación de Cuenta Portal Positiva Pensionados”,</b> indicando los siguientes datos:
+      <br><br> 
+      <ul class="ulModalLogin">
+      <li class="liModalLogin">Nombre completo.</li>
+      <li class="liModalLogin">Tipo y número de documento.</li>
+      <li class="liModalLogin">Teléfono de contacto.</li>
+      <li class="liModalLogin">Correo electrónico.</li>
+      </ul>
+       <br> <br> Uno de nuestros asesores verificará tu información y se encargará de realizar tu registro en el portal. 1`
+    );
+    setSuccessGridContent(
+      <>
+        <div className="z-2 rounded-br-2xl rounded-bl-2xl bg-[var(--navy-primary)] py-[20px] pr-[16px] pl-[16px] sm:pr-12 sm:pl-12">
+          <p className="text-center text-base text-white">
+            Si lo prefieres, también puedes comunicarte a nuestras líneas de atención gratuitas para
+            recibir asistencia en el proceso:
+          </p>
+          <div className="grid grid-cols-2">
+            <p className="font-roboto mt-4 text-center text-base leading-6 font-semibold text-white">
+              Línea de atención nacional: <br />
+              <span className="cursor-pointer font-semibold text-[var(--primary-positiva)] underline">
+                01 8000 11 1170
+              </span>
+            </p>
+
+            <p className="font-roboto mt-4 text-center text-base leading-6 font-semibold text-white">
+              Línea de atención en Bogotá: <br />
+              <span className="cursor-pointer text-[var(--primary-positiva)] underline">
+                (+57) 601 3307000
+              </span>
+            </p>
+          </div>
+        </div>
+      </>
+    );
+    setSuccessOpen(true);
+  };
+
   return (
     <AuthCard
       title={
         <>
-          Bienvenido al <span className="text-orange-500">Portal Pensionados</span>
+          <span>
+            Bienvenido al <span className="font-bold text-orange-500">Portal Pensionados</span>
+          </span>
         </>
       }
       subtitle="Ingresa tu usuario y contraseña para continuar"
     >
+      <SuccessDialog
+        open={successOpen}
+        onOpenChange={setSuccessOpen}
+        title={successTitle}
+        description={successDescription}
+        gridContent={successGridContent}
+        isHtmlDescription={true}
+        variant={successVariant}
+      />
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="mb-6 grid w-full grid-cols-2">
+        <TabsList className="mb-7.5 grid w-full grid-cols-2">
           <TabsTrigger value="document" className="flex items-center space-x-2">
             <img src="/icon-document.svg" alt="icon-mail" />
             <span className="font-poppins text-[16px] leading-[24px] font-semibold">Documento</span>
@@ -138,10 +201,15 @@ export default function LoginPage() {
         </TabsList>
 
         <TabsContent value="document">
-          <form onSubmit={documentForm.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={documentForm.handleSubmit(onSubmit)} className="flex flex-col gap-5">
             <div className="flex w-full gap-5">
               <div className="w-1/3">
-                <Label htmlFor="document_type">Tipo de Documento</Label>
+                <Label
+                  htmlFor="document_type"
+                  className="font-poppins text-label-inputs pl-2 text-sm font-semibold"
+                >
+                  Tipo de Documento*
+                </Label>
                 <Select
                   value={documentType}
                   onValueChange={(value) => documentForm.setValue("document_type", value)}
@@ -161,7 +229,12 @@ export default function LoginPage() {
               </div>
 
               <div className="w-2/3">
-                <Label htmlFor="identifier">Número de Documento</Label>
+                <Label
+                  htmlFor="identifier"
+                  className="font-poppins text-label-inputs pl-2 text-sm font-semibold"
+                >
+                  Número de Documento*
+                </Label>
                 <Input
                   id="identifier"
                   type="text"
@@ -181,22 +254,36 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <Label htmlFor="password">Contraseña</Label>
+              <Label
+                htmlFor="password"
+                className="font-poppins text-label-inputs pl-2 text-sm font-semibold"
+              >
+                Contraseña*
+              </Label>
               <div className="relative">
+                <img
+                  src="/icon-padlock.svg"
+                  alt="icon-padlock"
+                  className="absolute top-1/2 left-4.75 -translate-y-1/2 transform"
+                />
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
                   {...documentForm.register("password", { required: "La contraseña es requerida" })}
                   disabled={isLoading}
                   placeholder="Tu contraseña"
-                  className={`pr-10 ${documentForm.formState.errors.password ? "border-red-500" : ""}`}
+                  className={`px-11.75 ${documentForm.formState.errors.password ? "border-red-positiva" : ""}`}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute top-1/2 right-3 -translate-y-1/2 transform text-gray-400 hover:text-gray-600"
                 >
-                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  <img
+                    src={showPassword ? "/icon-eye-hide.svg" : "/icon-eye-show.svg"}
+                    alt="icon-mail"
+                    className=""
+                  />
                 </button>
               </div>
               {documentForm.formState.errors.password && (
@@ -206,22 +293,24 @@ export default function LoginPage() {
               )}
             </div>
 
-            <CustomButton
-              type="submit"
-              name="Ingresar"
-              iconPosition="right"
-              icon={<ChevronsRight className="h-4 w-4" />}
-              disabled={isLoading}
-              loading={isLoading}
-              className="w-full"
-            />
+            <div className="flex w-full justify-center">
+              <CustomButton
+                type="submit"
+                name="Ingresar"
+                iconPosition="right"
+                icon={<ChevronsRight className="h-4 w-4" />}
+                disabled={isLoading}
+                loading={isLoading}
+                className="font-poppins border-primary-positiva h-11 w-52.5 gap-2 border py-3 font-semibold text-white"
+              />
+            </div>
           </form>
         </TabsContent>
 
         <TabsContent value="email">
-          <form onSubmit={emailForm.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={emailForm.handleSubmit(onSubmit)} className="flex flex-col gap-5">
             <div>
-              <Label htmlFor="email">Correo Electrónico</Label>
+              <Label htmlFor="email">Correo Electrónico *</Label>
               <Input
                 id="email"
                 type="email"
@@ -244,22 +333,36 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <Label htmlFor="password">Contraseña</Label>
+              <Label
+                htmlFor="password"
+                className="font-poppins text-label-inputs pl-2 text-sm font-semibold"
+              >
+                Contraseña*
+              </Label>
               <div className="relative">
+                <img
+                  src="/icon-padlock.svg"
+                  alt="icon-padlock"
+                  className="absolute top-1/2 left-4.75 -translate-y-1/2 transform"
+                />
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
                   {...emailForm.register("password", { required: "La contraseña es requerida" })}
                   disabled={isLoading}
                   placeholder="Tu contraseña"
-                  className={`pr-10 ${emailForm.formState.errors.password ? "border-red-500" : ""}`}
+                  className={`px-11.75 ${emailForm.formState.errors.password ? "border-red-positiva" : ""}`}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute top-1/2 right-3 -translate-y-1/2 transform text-gray-400 hover:text-gray-600"
                 >
-                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  <img
+                    src={showPassword ? "/icon-eye-hide.svg" : "/icon-eye-show.svg"}
+                    alt="icon-mail"
+                    className=""
+                  />
                 </button>
               </div>
               {emailForm.formState.errors.password && (
@@ -269,26 +372,35 @@ export default function LoginPage() {
               )}
             </div>
 
-            <CustomButton
-              type="submit"
-              name="Ingresar"
-              iconPosition="right"
-              icon={<ChevronsRight className="h-4 w-4" />}
-              disabled={isLoading}
-              loading={isLoading}
-              className="w-full"
-            />
+            <div className="flex w-full justify-center">
+              <CustomButton
+                type="submit"
+                name="Ingresar"
+                iconPosition="right"
+                icon={<ChevronsRight className="h-4 w-4" />}
+                disabled={isLoading}
+                loading={isLoading}
+                className="font-poppins border-primary-positiva h-11 w-52.5 gap-2 border py-3 font-semibold text-white"
+              />
+            </div>
           </form>
         </TabsContent>
       </Tabs>
 
-      <div className="mt-6 text-center">
+      <div className="mt-5 flex flex-col items-center justify-center gap-5 text-center">
         <button
           onClick={handlePasswordReset}
-          className="text-primary-positiva font-medium hover:underline"
+          className="text-primary-positiva font-poppins text-lg font-bold hover:underline"
         >
           ¿Olvidaste tu contraseña?
         </button>
+
+        <p className="font-poppins text-navy-primary text-lg font-bold">
+          ¿No tienes cuenta?
+          <button onClick={handleModal} className="text-primary-positiva hover:underline">
+            Consulta aquí
+          </button>
+        </p>
       </div>
     </AuthCard>
   );

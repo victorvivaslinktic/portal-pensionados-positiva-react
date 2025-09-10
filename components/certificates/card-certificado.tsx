@@ -21,7 +21,7 @@ export const CardCertificado = ({
   extra,
 }: Props) => {
   return (
-    <div className="flex min-h-[300px] w-[270px] flex-col justify-between rounded-lg bg-[#F4F4F4] p-6">
+    <div className="flex flex-col justify-between rounded-[20px] bg-[#F4F4F4] px-[30px] py-[40px]">
       <div>
         <div className="relative mb-4">
           <Image
@@ -33,11 +33,11 @@ export const CardCertificado = ({
             className="h-10 w-10 object-contain sm:h-12 sm:w-12"
           />
         </div>
-        <h3 className="text-xl font-bold text-[#173748]">
+        <h3 className="text-lg font-semibold text-[#173748]">
           {title}
           <div className="mt-2 w-12 rounded-full bg-orange-500 py-[2px]"></div>
         </h3>
-        {description && <p className="mt-3 text-sm text-gray-600">{description}</p>}
+        {description && <p className="font-roboto mt-3 text-xs text-gray-600">{description}</p>}
         {extra && <div className="mt-3">{extra}</div>}
       </div>
 

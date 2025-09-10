@@ -3,13 +3,13 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { ArrowLeft, Shield, RotateCcw } from "lucide-react";
 import { AuthCard } from "@/components/auth/auth-card";
 import { CustomButton } from "@/components/ui/custom-button";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { authService } from "@/lib/services/auth.service";
 import { useAuthStore } from "@/lib/stores/auth.store";
 import { toast } from "@/lib/stores/toast-store";
+import Image from "next/image";
 
 type TwoFAFormData = {
   code: string;
@@ -26,6 +26,8 @@ export default function TwoFAPage() {
 
   const code = watch("code");
 
+  const [status, setStatus] = useState("normal"); // "normal" | "expired" | "invalid" | "success" = "normal";
+
   useEffect(() => {
     if (timeLeft > 0) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
@@ -41,6 +43,7 @@ export default function TwoFAPage() {
 
   const onSubmit = async (data: TwoFAFormData) => {
     if (!transactionId) {
+      setStatus("error");
       toast.error("Error", "No hay una sesión activa");
       router.push("/auth/login");
       return;
@@ -55,6 +58,7 @@ export default function TwoFAPage() {
       });
 
       if (response.access_token && response.refresh_token) {
+        setStatus("success");
         const payload = JSON.parse(atob(response.access_token.split(".")[1]));
 
         login(response.access_token, response.refresh_token, {
@@ -79,6 +83,7 @@ export default function TwoFAPage() {
         }
       }
     } catch (error: unknown) {
+      setStatus("error");
       console.error("2FA verification error:", error);
 
       const errorMessage = (error as Error).message;
@@ -98,6 +103,7 @@ export default function TwoFAPage() {
   };
 
   const handleResend = async () => {
+    setStatus("normal");
     if (!loginData) {
       toast.error("Error", "No hay datos de login disponibles");
       return;
@@ -150,26 +156,53 @@ export default function TwoFAPage() {
       }
       subtitle="Por favor ingresa el código de verificación enviado a tu correo electrónico"
     >
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center space-y-6">
         <div className="space-y-4">
           <div className="flex justify-center">
             <InputOTP
               maxLength={6}
               value={code}
-              onChange={(value) => setValue("code", value)}
+              onChange={(value) => {
+                setValue("code", value);
+                setStatus("normal");
+              }}
               disabled={isLoading || timeLeft === 0}
+              className="max-w-[486px] gap-[30px]"
             >
-              <InputOTPGroup>
-                <InputOTPSlot index={0} />
-                <InputOTPSlot index={1} />
-                <InputOTPSlot index={2} />
-                <InputOTPSlot index={3} />
-                <InputOTPSlot index={4} />
-                <InputOTPSlot index={5} />
+              <InputOTPGroup className="gap-2 md:gap-[30px]">
+                <InputOTPSlot
+                  index={0}
+                  data-status={status}
+                  className="data-[status=error]:border-red-positiva data-[status=success]:border-green-positiva"
+                />
+                <InputOTPSlot
+                  index={1}
+                  data-status={status}
+                  className="data-[status=error]:border-red-positiva data-[status=success]:border-green-positiva"
+                />
+                <InputOTPSlot
+                  index={2}
+                  data-status={status}
+                  className="data-[status=error]:border-red-positiva data-[status=success]:border-green-positiva"
+                />
+                <InputOTPSlot
+                  index={3}
+                  data-status={status}
+                  className="data-[status=error]:border-red-positiva data-[status=success]:border-green-positiva"
+                />
+                <InputOTPSlot
+                  index={4}
+                  data-status={status}
+                  className="data-[status=error]:border-red-positiva data-[status=success]:border-green-positiva"
+                />
+                <InputOTPSlot
+                  index={5}
+                  data-status={status}
+                  className="data-[status=error]:border-red-positiva data-[status=success]:border-green-positiva"
+                />
               </InputOTPGroup>
             </InputOTP>
           </div>
-
           {timeLeft > 0 ? (
             <p className="text-center text-sm text-gray-600">
               Tiempo restante: <span className="font-mono font-bold">{formatTime(timeLeft)}</span>
@@ -184,10 +217,10 @@ export default function TwoFAPage() {
         <CustomButton
           type="submit"
           name="Validar Código"
-          icon={<Shield className="h-4 w-4" />}
+          icon={<Image src="/botton-icon.svg" alt="icon" width={18} height={18} />}
           disabled={isLoading || !code || code.length !== 6 || timeLeft === 0}
           loading={isLoading}
-          className="w-full"
+          iconPosition="right"
         />
       </form>
 
@@ -195,9 +228,9 @@ export default function TwoFAPage() {
         <button
           onClick={handleResend}
           disabled={isResending}
-          className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-medium hover:underline disabled:opacity-50"
+          className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-bold hover:underline disabled:opacity-50"
         >
-          <RotateCcw className={`h-4 w-4 ${isResending ? "animate-spin" : ""}`} />
+          <Image src="/icon-reload.svg" alt="icon" width={18} height={18} />
           <span>{isResending ? "Reenviando..." : "Reenviar código"}</span>
         </button>
       </div>
@@ -205,9 +238,9 @@ export default function TwoFAPage() {
       <div className="mt-6 text-center">
         <button
           onClick={handleBack}
-          className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-medium hover:underline"
+          className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-bold hover:underline"
         >
-          <ArrowLeft className="h-4 w-4" />
+          <Image src="/arrow-positiva.svg" alt="icon" width={18} height={18} />
           <span>Volver al inicio de sesión</span>
         </button>
       </div>

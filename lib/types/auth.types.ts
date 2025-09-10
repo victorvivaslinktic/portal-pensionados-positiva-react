@@ -157,9 +157,9 @@ export interface DocumentType {
 export const DOCUMENT_TYPES: DocumentType[] = [
   { value: "CC", label: "Cédula de ciudadanía", label2: "C.C." },
   { value: "CE", label: "Cédula de extranjería", label2: "C.E." },
-  { value: "RC", label: "Registro civil", label2: "R.C." },
   { value: "PT", label: "Permiso por protección temporal", label2: "P.T." },
   { value: "TI", label: "Tarjeta de identidad", label2: "T.I." },
-  { value: "PA", label: "Pasaporte", label2: "P.A." },
-  { value: "NIT", label: "NIT" },
+  { value: "RC", label: "Registro civil", label2: "R.C." },
+  // { value: "PA", label: "Pasaporte", label2: "P.A." },
+  // { value: "NIT", label: "NIT" },
 ];

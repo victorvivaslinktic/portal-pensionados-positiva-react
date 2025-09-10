@@ -104,9 +104,7 @@ export const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProp
         );
       }
 
-      const iconElement = icon && (
-        <span className={iconPosition === "left" ? "mr-2" : "ml-2"}>{icon}</span>
-      );
+      const iconElement = icon && <span>{icon}</span>;
 
       if (children) {
         return children;
@@ -129,7 +127,7 @@ export const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProp
       <ShadcnButton
         ref={ref}
         variant={getVariant()}
-        className={getClassName()}
+        className={cn("inline-flex w-auto items-center rounded-[7px]", getClassName(), className)}
         disabled={isDisabled || isLoading}
         onClick={handleClick}
         {...props}

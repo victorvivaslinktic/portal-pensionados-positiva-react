@@ -35,6 +35,7 @@ export default function DashboardPage() {
   const [successTitle, setSuccessTitle] = useState<string>("");
   const [successDescription, setSuccessDescription] = useState<string>("");
   const [successVariant, setSuccessVariant] = useState<"success" | "error">("success");
+  const [successGridContent, setSuccessGridContent] = useState<React.ReactNode>(null);
 
   const handleDocumentAction = async (type: string) => {
     if (!user) {
@@ -91,7 +92,33 @@ export default function DashboardPage() {
         setSuccessVariant("error");
         setSuccessTitle("El certificado no fue encontrado");
         setSuccessDescription(
-          "Escribe a este correo servicioalcliente@positiva.com \nComunicante a la línea"
+          ` Por favor, envía un correo a <a href="mailto:servicioalcliente@positiva.gov.co" class="underline text-[var(--primary-positiva)] cursor-pointer font-semibold" target="_blank">servicioalcliente@positiva.gov.co</a> con el asunto <b>“Solicitud Certificado Portal Pensionados”</b>, indicando el tipo de certificado que deseas descargar. Si lo prefieres, también puedes comunicarte a nuestras líneas de atención gratuitas para solicitar tu certificado: `
+        );
+        setSuccessGridContent(
+          <>
+            <div className="mt-6 grid grid-cols-2 gap-4">
+              <div>
+                <ul>
+                  <p className="font-roboto mt-4 text-center text-sm leading-6 font-semibold text-[var(--navy-primary)]">
+                    Línea de atención nacional: <br />
+                    <span className="cursor-pointer font-semibold text-[var(--primary-positiva)] underline">
+                      01 8000 11 1170
+                    </span>
+                  </p>
+                </ul>
+              </div>
+              <div>
+                <ul>
+                  <p className="font-roboto mt-4 text-center text-sm leading-6 font-semibold text-[var(--navy-primary)]">
+                    Línea de atención en Bogotá: <br />
+                    <span className="cursor-pointer text-[var(--primary-positiva)] underline">
+                      (+57) 601 3307000
+                    </span>
+                  </p>
+                </ul>
+              </div>
+            </div>
+          </>
         );
       }
       setSuccessOpen(true);
@@ -150,89 +177,94 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="w-full">
-      <SuccessDialog
-        open={successOpen}
-        onOpenChange={setSuccessOpen}
-        title={successTitle}
-        description={successDescription}
-        variant={successVariant}
-      />
-
-      <div className="mb-6 flex flex-col space-y-4 px-10 sm:mb-8 sm:flex-row sm:items-center sm:justify-between sm:space-y-0 lg:mb-10">
-        <div className="flex-1">
-          <h1 className="mb-2 text-xl font-bold text-balance text-gray-800 sm:text-2xl lg:text-3xl">
-            Hola, bienvenido a tu portal
-          </h1>
-          <p className="text-2xl font-bold text-balance text-orange-500 sm:text-3xl lg:text-4xl">
-            {normalizeNameForDisplay(user.first_name)} {normalizeNameForDisplay(user.last_name)}
-          </p>
-        </div>
-        <button
-          onClick={handleLogout}
-          disabled={isLoggingOut || isLoading !== null}
-          className="flex w-full cursor-pointer items-center justify-center space-x-2 rounded-md bg-orange-500 px-8 py-2.5 text-base font-semibold text-white transition-colors hover:bg-orange-600 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:px-6"
-          aria-label="Cerrar sesión y volver al login"
-        >
-          {isLoggingOut ? (
-            <>
-              <div className="h-4 w-4 animate-spin rounded-full border-b-2 border-white"></div>
-              <span>Cerrando...</span>
-            </>
-          ) : (
-            <>
-              <span>Cerrar sesión</span>
-              <ChevronsRight className="h-4 w-4 sm:h-5 sm:w-5" />
-            </>
-          )}
-        </button>
-      </div>
-
-      <section className="w-full bg-white px-10 py-20">
-        <div className="mx-auto flex w-full max-w-screen-2xl flex-col justify-between gap-4 lg:flex-row">
-          <h2 className="mb-10 max-w-xs text-2xl font-bold text-balance text-gray-800 sm:mb-6">
-            Certificados de pensionados
-            <div className="mt-2 w-20 rounded-full bg-orange-500 py-[3px]"></div>
-          </h2>
-
-          <div className="flex w-full flex-row flex-wrap justify-center gap-6 lg:justify-end">
-            <CardCertificado
-              title="Certificado de ingresos y retenciones de pensión"
-              imageSrc={Card1}
-              isLoading={isLoading === "income_retention"}
-              handleDocumentAction={() => handleDocumentAction("income_retention")}
-            />
-
-            <CardCertificado
-              title="Certificado de pensión"
-              imageSrc={Card2}
-              isLoading={isLoading === "pension_certificate"}
-              handleDocumentAction={() => handleDocumentAction("pension_certificate")}
-            />
-
-            <CardCertificado
-              title="Certificado de pago de pensión"
-              imageSrc={Card3}
-              isLoading={isLoading === "pension_payment"}
-              handleDocumentAction={() => handleDocumentAction("pension_payment")}
-              description="Selecciona el mes que quieres consultar"
-              extra={
-                <div>
-                  <input
-                    type="month"
-                    className="portal-input w-full rounded border border-gray-300 bg-white px-3 py-2 text-sm sm:py-3 sm:text-base"
-                    min={monthInputBounds.min}
-                    max={monthInputBounds.max}
-                    value={selectedMonthYear}
-                    onChange={(e) => setSelectedMonthYear(e.target.value)}
-                    aria-label="Seleccionar mes/año (últimos 3 meses)"
-                  />
-                </div>
-              }
-            />
+    <>
+      <div className="backgroundPensionados flex min-h-[209px] w-full items-center md:min-h-[204px]">
+        <div className="containerMaxWidth mb-6 flex w-full flex-col items-end space-y-4 px-[16px] sm:mb-8 sm:flex-row sm:items-center sm:justify-between sm:space-y-0 md:px-0">
+          <div className="w-full flex-1">
+            <h1 className="mb-2 text-2xl font-bold text-balance text-gray-800 md:text-3xl">
+              Hola, bienvenido a tu portal
+            </h1>
+            <p className="text-2xl font-bold text-balance text-orange-500 sm:text-3xl lg:text-4xl">
+              {normalizeNameForDisplay(user.first_name)} {normalizeNameForDisplay(user.last_name)}
+            </p>
           </div>
+          <button
+            onClick={handleLogout}
+            disabled={isLoggingOut || isLoading !== null}
+            className="flex w-full cursor-pointer items-center justify-center space-x-2 rounded-md bg-orange-500 px-8 py-2.5 text-base font-semibold text-white transition-colors hover:bg-orange-600 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:px-6"
+            aria-label="Cerrar sesión y volver al login"
+          >
+            {isLoggingOut ? (
+              <>
+                <div className="h-4 w-4 animate-spin rounded-full border-b-2 border-white"></div>
+                <span>Cerrando...</span>
+              </>
+            ) : (
+              <>
+                <span>Cerrar sesión</span>
+                <ChevronsRight className="h-4 w-4 sm:h-5 sm:w-5" />
+              </>
+            )}
+          </button>
         </div>
-      </section>
-    </div>
+      </div>
+      <div className="w-full">
+        <SuccessDialog
+          open={successOpen}
+          onOpenChange={setSuccessOpen}
+          title={successTitle}
+          description={successDescription}
+          gridContent={successGridContent}
+          isHtmlDescription={successVariant === "error"}
+          variant={successVariant}
+        />
+
+        <section className="w-full bg-white py-10 md:pt-13 md:pb-26">
+          <div className="containerMaxWidth m-auto mx-auto flex w-full max-w-screen-2xl flex-col justify-between gap-5 lg:flex-row">
+            <h2 className="mb-10 max-w-2xs text-2xl font-bold text-balance text-gray-800 sm:mb-6 md:text-3xl">
+              Certificados de pensionados
+              <div className="mt-2 w-20 rounded-full bg-orange-500 py-[3px]"></div>
+            </h2>
+
+            <div className="grid w-full gap-7 md:grid-cols-3">
+              <CardCertificado
+                title="Certificado de ingresos y retenciones de pensión"
+                imageSrc={Card1}
+                isLoading={isLoading === "income_retention"}
+                handleDocumentAction={() => handleDocumentAction("income_retention")}
+              />
+
+              <CardCertificado
+                title="Certificado de pensión"
+                imageSrc={Card2}
+                isLoading={isLoading === "pension_certificate"}
+                handleDocumentAction={() => handleDocumentAction("pension_certificate")}
+              />
+
+              <CardCertificado
+                title="Certificado de pago de pensión"
+                imageSrc={Card3}
+                isLoading={isLoading === "pension_payment"}
+                handleDocumentAction={() => handleDocumentAction("pension_payment")}
+                description="Selecciona el mes que quieres consultar"
+                extra={
+                  <div>
+                    <input
+                      type="month"
+                      className="portal-input w-full rounded border border-gray-300 bg-white px-3 py-2 text-sm sm:py-3 sm:text-base"
+                      min={monthInputBounds.min}
+                      max={monthInputBounds.max}
+                      value={selectedMonthYear}
+                      onChange={(e) => setSelectedMonthYear(e.target.value)}
+                      aria-label="Seleccionar mes/año (últimos 3 meses)"
+                    />
+                  </div>
+                }
+              />
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
   );
 }
