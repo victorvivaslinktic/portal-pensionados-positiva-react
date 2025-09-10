@@ -305,9 +305,9 @@ export default function LoginPage() {
                   />
                 </button>
               </div>
-              {documentForm.formState.errors.password && (
+              {emailForm.formState.errors.password && (
                 <p className="mt-1 text-sm text-red-500">
-                  {documentForm.formState.errors.password.message}
+                  {emailForm.formState.errors.password.message}
                 </p>
               )}
             </div>

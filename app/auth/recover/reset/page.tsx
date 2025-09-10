@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ChevronsRight, AlertCircle, RotateCcw } from "lucide-react";
+import { ChevronsRight, AlertCircle } from "lucide-react";
 import { AuthCard } from "@/components/auth/auth-card";
 import { CustomButton } from "@/components/ui/custom-button";
 import { Input } from "@/components/ui/input";
@@ -14,6 +14,7 @@ import { toast } from "@/lib/stores/toast-store";
 import { useAuthStore } from "@/lib/stores/auth.store";
 import { usePasswordValidation } from "@/lib/hooks/use-password-validation";
 import { generateSecurePassword } from "@/lib/utils/generate-password";
+import Image from "next/image";
 
 export default function ResetPage() {
   const router = useRouter();
@@ -77,7 +78,7 @@ export default function ResetPage() {
 
       toast.success("Contraseña restablecida", "Tu contraseña ha sido cambiada exitosamente.");
       setRecoveryEmail(null); // Limpiar el email del store
-      router.push("/auth/login");
+      router.push("/auth/recover/thank-you");
     } catch (error: unknown) {
       console.error("Password reset confirm error:", error);
 
@@ -250,21 +251,23 @@ export default function ResetPage() {
           />
         </div>
 
-        <PasswordInput
-          id="confirmPassword"
-          label="Confirmar Nueva Contraseña"
-          value={confirmPassword}
-          onChange={setConfirmPassword}
-          onBlur={() => setTouched((prev) => ({ ...prev, confirmPassword: true }))}
-          disabled={isLoading}
-          placeholder="Repite tu nueva contraseña"
-          touched={touched.confirmPassword}
-          required
-        />
+        <div className="flex flex-col gap-1">
+          <PasswordInput
+            id="confirmPassword"
+            label="Confirmar Nueva Contraseña"
+            value={confirmPassword}
+            onChange={setConfirmPassword}
+            onBlur={() => setTouched((prev) => ({ ...prev, confirmPassword: true }))}
+            disabled={isLoading}
+            placeholder="Repite tu nueva contraseña"
+            touched={touched.confirmPassword}
+            required
+          />
 
-        {touched.confirmPassword && confirmPassword && !passwordsMatch && (
-          <p className="mt-1 text-sm text-red-500">Las contraseñas no coinciden</p>
-        )}
+          {touched.confirmPassword && confirmPassword && !passwordsMatch && (
+            <p className="mt-1 text-sm text-red-500">Las contraseñas no coinciden</p>
+          )}
+        </div>
 
         <div className="flex w-full justify-center">
           <div className="max-w-[480px]">
@@ -301,9 +304,15 @@ export default function ResetPage() {
           <button
             onClick={handleResend}
             disabled={isResending}
-            className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-medium hover:underline disabled:opacity-50"
+            className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-bold hover:underline"
           >
-            <RotateCcw className={`h-4 w-4 ${isResending ? "animate-spin" : ""}`} />
+            <Image
+              src="/icon-reload.svg"
+              alt="icon"
+              width={18}
+              height={18}
+              className={`h-4 w-4 ${isResending ? "animate-spin" : ""}`}
+            />
             <span>{isResending ? "Reenviando..." : "Reenviar código"}</span>
           </button>
         </div>

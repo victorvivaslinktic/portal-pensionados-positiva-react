@@ -55,7 +55,7 @@ function InputOTPSlot({
       className={cn(
         "font-poppins relative flex h-[3em] w-[3em] items-center justify-center rounded-md border-2 text-sm shadow-xs transition-all outline-none md:h-[56px] md:w-[55px]",
 
-        "data-[active=true]:border-[var(--primary-positiva)] data-[active=true]:ring-1 data-[active=true]:ring-orange-500",
+        "data-[active=true]:border-primary-positiva data-[active=true]:ring-primary-positiva data-[active=true]:ring-1",
 
         "aria-invalid:border-destructive data-[active=true]:aria-invalid:border-destructive data-[active=true]:aria-invalid:ring-destructive/20 dark:data-[active=true]:aria-invalid:ring-destructive/40",
         "dark:bg-input/30 border-input font-roboto text-[#313131;] text-center text-sm font-semibold md:text-lg",

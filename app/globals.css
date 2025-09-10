@@ -35,6 +35,7 @@
   --color-custom-gray: var(--custom-color-gray);
   --color-custom-gray-border-inputs: var(--custom-gray-border-inputs);
   --color-red-positiva: var(--custom-color-red-positiva);
+  --color-green-positiva: var(--custom-color-green-positiva);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
@@ -67,6 +68,7 @@
   --custom-color-gray: #747474;
   --custom-color-label-inputs: #5d6977;
   --custom-gray-border-inputs: #D9DCE3;
+  --custom-color-green-positiva: #39BA2E;
   --custom-color-red-positiva: #e60003;
   --custom-color-green-state: #D0F3CD;
   --custom-color-yellow-state: #FCE9B8;
