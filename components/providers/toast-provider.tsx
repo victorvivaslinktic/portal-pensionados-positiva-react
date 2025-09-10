@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { toast as sonnerToast } from "sonner";
 import { useToastStore } from "@/lib/stores/toast-store";
+import Image from "next/image";
 
 export function ToastProvider() {
   const { toasts, removeToast } = useToastStore();
@@ -20,13 +21,30 @@ export function ToastProvider() {
             sonnerToast.success(toast.title, {
               description: toast.description,
               duration: toast.duration,
+              icon: (
+                <Image
+                  src="/success-icon.svg"
+                  width={22}
+                  height={22}
+                  alt="icono custom"
+                  className="iconPosition"
+                />
+              ),
               onDismiss: () => {
                 removeToast(toastId);
                 processedToasts.current.delete(toastId);
               },
-              className: "toast-success",
+              className: "toast-success toatsStyle",
               action: {
-                label: "✕",
+                label: (
+                  <Image
+                    src="/equis.svg"
+                    width={18}
+                    height={18}
+                    alt="equis"
+                    className="equisModal"
+                  />
+                ),
                 onClick: () => {
                   removeToast(toastId);
                   processedToasts.current.delete(toastId);
@@ -38,13 +56,30 @@ export function ToastProvider() {
             sonnerToast.error(toast.title, {
               description: toast.description,
               duration: toast.duration,
+              icon: (
+                <Image
+                  src="/error-icon.svg"
+                  width={24}
+                  height={22}
+                  alt="icono custom"
+                  className="iconPosition"
+                />
+              ),
               onDismiss: () => {
                 removeToast(toastId);
                 processedToasts.current.delete(toastId);
               },
-              className: "toast-error",
+              className: "toast-error toatsStyle",
               action: {
-                label: "✕",
+                label: (
+                  <Image
+                    src="/equis.svg"
+                    width={18}
+                    height={18}
+                    alt="equis"
+                    className="equisModal"
+                  />
+                ),
                 onClick: () => {
                   removeToast(toastId);
                   processedToasts.current.delete(toastId);
@@ -60,9 +95,26 @@ export function ToastProvider() {
                 removeToast(toastId);
                 processedToasts.current.delete(toastId);
               },
-              className: "toast-warning",
+              icon: (
+                <Image
+                  src="/warning-icon.svg"
+                  width={24}
+                  height={24}
+                  alt="icono custom"
+                  className="iconPosition"
+                />
+              ),
+              className: "toast-warning toatsStyle",
               action: {
-                label: "✕",
+                label: (
+                  <Image
+                    src="/equis.svg"
+                    width={18}
+                    height={18}
+                    alt="equis"
+                    className="equisModal"
+                  />
+                ),
                 onClick: () => {
                   removeToast(toastId);
                   processedToasts.current.delete(toastId);
@@ -78,9 +130,26 @@ export function ToastProvider() {
                 removeToast(toastId);
                 processedToasts.current.delete(toastId);
               },
-              className: "toast-info",
+              icon: (
+                <Image
+                  src="/warning-icon.svg"
+                  width={24}
+                  height={24}
+                  alt="icono custom"
+                  className="iconPosition"
+                />
+              ),
+              className: "toast-info toatsStyle",
               action: {
-                label: "✕",
+                label: (
+                  <Image
+                    src="/equis.svg"
+                    width={18}
+                    height={18}
+                    alt="equis"
+                    className="equisModal"
+                  />
+                ),
                 onClick: () => {
                   removeToast(toastId);
                   processedToasts.current.delete(toastId);

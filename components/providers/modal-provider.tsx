@@ -56,7 +56,7 @@ export function ModalProvider() {
                 ) : (
                   getIcon(modal.type)
                 )}
-                <DialogTitle className="text-left">{modal.title}</DialogTitle>
+                <DialogTitle className="text-left">{modal.title} AQUI ES </DialogTitle>
               </div>
               {modal.description && (
                 <DialogDescription className="text-left">{modal.description}</DialogDescription>

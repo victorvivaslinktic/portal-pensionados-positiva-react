@@ -15,25 +15,53 @@ interface SuccessDialogProps {
   onOpenChange: (open: boolean) => void;
   title?: string;
   description?: string;
+  isHtmlDescription?: boolean;
   variant?: "success" | "error";
+  gridContent?: React.ReactNode; // ✅ nueva prop
 }
 
 export const SuccessDialog = forwardRef<HTMLDivElement, SuccessDialogProps>(function SuccessDialog(
-  { open, onOpenChange, title, description, variant = "success" },
+  {
+    open,
+    onOpenChange,
+    title,
+    description,
+    isHtmlDescription = false,
+    variant = "success",
+    gridContent, // ✅ destructuramos aquí
+  },
   ref
 ) {
   const getImageSrc = () => {
-    if (variant === "error") {
-      return "/notfound.png";
-    }
-    return "/success.png";
+    return variant === "error" ? "/notfound.png" : "/success.png";
   };
 
   const getImageAlt = () => {
-    if (variant === "error") {
-      return "No encontrado";
+    return variant === "error" ? "No encontrado" : "Éxito";
+  };
+
+  const renderDescription = () => {
+    if (!description) return null;
+
+    if (isHtmlDescription) {
+      return (
+        <DialogDescription
+          id="dialog-description"
+          className="font-roboto mt-4 text-center leading-6 font-normal text-[var(--navy-primary)]"
+        >
+          <span dangerouslySetInnerHTML={{ __html: description }} />
+        </DialogDescription>
+      );
+    } else {
+      return (
+        <DialogDescription
+          id="dialog-description"
+          className="font-roboto mt-4 text-center leading-6 font-normal whitespace-pre-line text-[var(--navy-primary)]"
+        >
+          {description}
+        </DialogDescription>
+      );
     }
-    return "Éxito";
   };
 
   return (
@@ -54,19 +82,14 @@ export const SuccessDialog = forwardRef<HTMLDivElement, SuccessDialogProps>(func
             />
           </div>
 
-          <DialogTitle className="text-navy-primary text-center text-3xl font-extrabold">
+          <DialogTitle className="text-navy-primary font-poppins text-center text-3xl font-bold">
             {title}
             <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-orange-500"></div>
           </DialogTitle>
 
-          {description && (
-            <DialogDescription
-              id="dialog-description"
-              className="mt-4 text-center leading-relaxed whitespace-pre-line text-gray-600"
-            >
-              {description}
-            </DialogDescription>
-          )}
+          {renderDescription()}
+
+          {gridContent && <div className="mt-6 grid grid-cols-2 gap-4">{gridContent}</div>}
         </DialogHeader>
       </DialogContent>
     </Dialog>

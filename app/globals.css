@@ -53,7 +53,7 @@
 }
 
 :root {
-  --custom-color-background: #F5F5F5;
+  --custom-color-background: #f5f5f5;
   --custom-font-poppins: "Poppins", sans-serif;
   --primary-positiva: #ff7500;
   --accent-positiva: #ee7d30;
@@ -144,199 +144,14 @@ body {
   }
 }
 /* tailwind.config.csstailwind.config.csstailwind.config.css */
-/*.poppins-thin {
-  font-family: "Poppins", sans-serif;
-  font-weight: 100;
-  font-style: normal;
-}
-
-.poppins-extralight {
-  font-family: "Poppins", sans-serif;
-  font-weight: 200;
-  font-style: normal;
-}
-
-.poppins-light {
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.poppins-regular {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.poppins-medium {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.poppins-semibold {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-}
-
-.poppins-bold {
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.poppins-extrabold {
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-style: normal;
-}
-
-.poppins-black {
-  font-family: "Poppins", sans-serif;
-  font-weight: 900;
-  font-style: normal;
-}
-
-.poppins-thin-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 100;
-  font-style: italic;
-}
-
-.poppins-extralight-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 200;
-  font-style: italic;
-}
-
-.poppins-light-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.poppins-regular-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.poppins-medium-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-style: italic;
-}
-
-.poppins-semibold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: italic;
-}
-
-.poppins-bold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-style: italic;
-}
-
-.poppins-extrabold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-style: italic;
-}
-
-.poppins-black-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 900;
-  font-style: italic;
-}*/
 
 body {
   font-family: "Poppins", sans-serif;
 }
 
-.toast-success {
-  --normal-bg: #10b981 !important;
-  --normal-text: #ffffff !important;
-  --normal-border: #059669 !important;
-}
-
-.toast-success [data-title] {
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  color: #ffffff !important;
-}
-
-.toast-success [data-description] {
-  font-size: 14px !important;
-  color: #f0fdf4 !important;
-  opacity: 0.9 !important;
-}
-
-.toast-error {
-  --normal-bg: #ef4444 !important;
-  --normal-text: #ffffff !important;
-  --normal-border: #dc2626 !important;
-}
-
-.toast-error [data-title] {
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  color: #ffffff !important;
-}
-
-.toast-error [data-description] {
-  font-size: 14px !important;
-  color: #fef2f2 !important;
-  opacity: 0.9 !important;
-}
-
-.toast-warning {
-  --normal-bg: #f59e0b !important;
-  --normal-text: #ffffff !important;
-  --normal-border: #d97706 !important;
-}
-
-.toast-warning [data-title] {
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  color: #ffffff !important;
-}
-
-.toast-warning [data-description] {
-  font-size: 14px !important;
-  color: #fffbeb !important;
-  opacity: 0.9 !important;
-}
-
-.toast-info {
-  --normal-bg: #3b82f6 !important;
-  --normal-text: #ffffff !important;
-  --normal-border: #2563eb !important;
-}
-
-.toast-info [data-title] {
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  color: #ffffff !important;
-}
-
-.toast-info [data-description] {
-  font-size: 14px !important;
-  color: #eff6ff !important;
-  opacity: 0.9 !important;
-}
-
 /* Estilos para modo oscuro */
 .dark .toast-success {
-  --normal-bg: #059669 !important;
   --normal-text: #ffffff !important;
-  --normal-border: #047857 !important;
-}
-
-.dark .toast-success [data-title] {
-  color: #ffffff !important;
 }
 
 .dark .toast-success [data-description] {
@@ -344,13 +159,7 @@ body {
 }
 
 .dark .toast-error {
-  --normal-bg: #dc2626 !important;
   --normal-text: #ffffff !important;
-  --normal-border: #b91c1c !important;
-}
-
-.dark .toast-error [data-title] {
-  color: #ffffff !important;
 }
 
 .dark .toast-error [data-description] {
@@ -358,13 +167,7 @@ body {
 }
 
 .dark .toast-warning {
-  --normal-bg: #d97706 !important;
   --normal-text: #ffffff !important;
-  --normal-border: #b45309 !important;
-}
-
-.dark .toast-warning [data-title] {
-  color: #ffffff !important;
 }
 
 .dark .toast-warning [data-description] {
@@ -372,13 +175,7 @@ body {
 }
 
 .dark .toast-info {
-  --normal-bg: #2563eb !important;
   --normal-text: #ffffff !important;
-  --normal-border: #1d4ed8 !important;
-}
-
-.dark .toast-info [data-title] {
-  color: #ffffff !important;
 }
 
 .dark .toast-info [data-description] {
@@ -403,14 +200,108 @@ button:disabled {
   width: 100%;
 }
 .font-poppins {
-  font-family: "Poppins" !important;
+  font-family: var(--font-poppins) !important;
 }
 .font-roboto {
   font-family: Roboto;
-  font-weight: 600;
-  font-style: SemiBold;
-  font-size: 20px;
-  line-height: 20px;
-  letter-spacing: -0.5px;
-  text-align: center;
+}
+.toatsStyle {
+  width: 540px !important;
+  --normal-bg: #fff !important;
+  box-shadow: 4px 4px 65px 0px #cbd0e259;
+  padding: 20px 20px 20px 38px !important;
+  display: flex;
+  gap: 10px;
+  margin-top: 6em;
+  display: flex;
+  align-items: flex-start !important;
+}
+
+.toatsStyle [data-title] {
+  font-family: var(--font-poppins) !important;
+  font-weight: 600 !important;
+  text-align: justify !important;
+  color: #000000 !important;
+  font-size: 16px !important;
+}
+.toatsStyle [data-description] {
+  font-family: "Roboto", "Poppins" !important;
+  font-weight: 400 !important;
+  text-align: justify !important;
+  color: #000000 !important;
+  font-size: 14px !important;
+  position: relative !important;
+  display: flex;
+  align-items: flex-start;
+}
+.toatsStyle button {
+  color: #ffffff00 !important;
+  background-color: #ffffff00 !important;
+  padding: 0 !important;
+}
+
+.equisModal {
+  position: absolute !important;
+  top: 20px !important;
+  right: 20px !important;
+}
+.iconPosition {
+  margin-top: 10px;
+}
+li.toatsStyle:before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 46px;
+  border-radius: 200px;
+}
+li.toast-error.toatsStyle:before {
+  background: #e60003;
+}
+li.toast-success.toatsStyle:before {
+  background: #39ba2e;
+}
+li.ttoast-warning.toatsStyle:before,
+li.toast-info.toatsStyle:before {
+  background: #ffb800;
+}
+.backgroundPensionados {
+  background: url("/banner-bakground-posiitva.svg") center center / cover no-repeat;
+}
+
+.containerMaxWidth {
+  max-width: 1200px;
+  margin: auto;
+}
+
+@media (max-width: 1200px) {
+  .containerMaxWidth {
+    padding: 0 50px;
+  }
+}
+@media (max-width: 768px) {
+  .containerMaxWidth {
+    padding: 0 16px;
+  }
+}
+@media (max-width: 629px) {
+  .toatsStyle {
+    width: 90% !important;
+    margin-top: 4em;
+  }
+}
+
+@media (max-width: 600px) {
+  .toatsStyle {
+    width: 75% !important;
+    margin-top: 5em;
+    padding: 15px 15px 15px 35px !important;
+    right: 34px !important;
+  }
+  li.toatsStyle:before {
+    left: 15px;
+  }
 }
