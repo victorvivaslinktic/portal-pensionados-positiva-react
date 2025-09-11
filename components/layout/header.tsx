@@ -1,58 +1,44 @@
 "use client";
 
-import { useState } from "react";
+// import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-// import { Umbrella, DollarSign, Users, HardHat, Heart, ChevronDown, Menu, X } from "lucide-react";
-import { ChevronDown, Menu, X } from "lucide-react";
-import { redirections } from "@/lib/utils/redirections";
-import LogoHeader from "@/public/positiva-header-logo.svg";
-import { Icon } from "@/components/ui/icon";
-import IconMenu from "@/public/sprite-icons-menu.svg";
+// import { Menu, X } from "lucide-react"; // ChevronDown,
+// import { redirections } from "@/lib/utils/redirections";
+// import LogoHeader from "@/public/positiva-header-logo.svg";
+import LogoHeader from "@/public/positiva-logo-pensionados.svg";
+// import { Icon } from "@/components/ui/icon";
+// import IconMenu from "@/public/sprite-icons-menu.svg";
 
 export function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  // const toggleMobileMenu = () => {
+  //   setIsMobileMenuOpen(!isMobileMenuOpen);
+  // };
 
-  const getIcon = (iconName: string) => {
-    return <Icon name={iconName} className="h-8 w-8.75" spritePath={IconMenu.src} />;
-    //   switch (iconName) {
-    //     case "HardHat":
-    //       return <HardHat className="h-4 w-4" />;
-    //     case "Umbrella":
-    //       return <Umbrella className="h-4 w-4" />;
-    //     case "DollarSign":
-    //       return <DollarSign className="h-4 w-4" />;
-    //     case "Heart":
-    //       return <Heart className="h-4 w-4" />;
-    //     case "Users":
-    //       return <Users className="h-4 w-4" />;
-    //     default:
-    //       return null;
-    //   }
-  };
+  // const getIcon = (iconName: string) => {
+  //   return <Icon name={iconName} className="h-8 w-8.75" spritePath={IconMenu.src} />;
+  // };
 
   return (
     <header>
-      <div className="bg-primary-positiva flex min-h-[70px] items-center justify-center py-3 text-white">
-        <div className="flex w-full max-w-[1440px] justify-between px-5 lg:pr-70 lg:pl-30">
+      <div className="flex min-h-[90px] w-full flex-col items-center justify-center bg-white py-2.5 md:py-3.75">
+        <div className="flex w-full max-w-[1440px] justify-between px-5 lg:pl-22.5">
           <div className="mr-auto flex items-center space-x-2 sm:space-x-4">
             <Link href="/">
               <Image
                 src={LogoHeader}
                 alt="Positiva Compañía de Seguros"
-                width={160}
-                height={40}
+                width={462.86}
+                height={60}
                 loading="eager"
                 className="h-auto"
               />
             </Link>
           </div>
 
-          <nav className="mx-auto hidden max-w-[795.32px] items-center lg:flex">
+          {/* <nav className="mx-auto hidden max-w-[795.32px] items-center lg:flex">
             {redirections.topNav.map((item) => (
               <div
                 key={item.name}
@@ -65,25 +51,26 @@ export function Header() {
                   {getIcon(item.name)}
                   <span>{item.name}</span>
                 </Link>
-                {/* {index < redirections.topNav.length - 1 && (
-                    <span className="mx-4 h-6 w-px bg-white" />
-                  )} */}
               </div>
             ))}
-          </nav>
+          </nav> */}
 
-          <button
+          {/* <button
             onClick={toggleMobileMenu}
-            className="flex items-center justify-center rounded-md p-2 transition-colors hover:bg-orange-600 lg:hidden"
+            className="hover:bg-primary-positiva flex items-center justify-center rounded-md p-2 transition-colors lg:hidden"
             aria-label="Abrir menú"
           >
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          </button> */}
         </div>
+      </div>
+      <div className="flex h-2.5 w-full">
+        <div className="bg-navy-primary h-full w-full"></div>
+        <div className="bg-primary-positiva h-full w-full"></div>
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
+      {/* {isMobileMenuOpen && (
         <div className="border-t border-orange-400 text-white lg:hidden">
           <div className="border-primary-positiva bg-primary-positiva border-b px-5 py-4">
             <h3 className="mb-3 text-sm font-semibold text-orange-100">Servicios</h3>
@@ -136,7 +123,7 @@ export function Header() {
             ))}
           </nav>
         </div>
-      </div>
+      </div> */}
     </header>
   );
 }

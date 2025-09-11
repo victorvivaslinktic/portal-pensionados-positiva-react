@@ -278,12 +278,12 @@ export default function ResetPage() {
         </div>
 
         <div className="flex w-full justify-center">
-          <div className="max-w-[480px]">
-            <p className="text-custom-gray text-center text-sm">
-              *La contraseña debe ser al menos doce caracteres. Para ser más segura alterna
-              mayúsculas y minúsculas números y símbolos como !”?$_y).
-            </p>
-          </div>
+          {/* <div className="max-w-[480px]"> */}
+          <p className="text-custom-gray text-center text-sm">
+            *La contraseña debe ser al menos doce caracteres. Para ser más segura alterna mayúsculas
+            y minúsculas números y símbolos como !”?$_y).
+          </p>
+          {/* </div> */}
         </div>
 
         <div className="flex w-full justify-evenly gap-5">
@@ -294,7 +294,7 @@ export default function ResetPage() {
             iconPosition="right"
             disabled={isLoading}
             loading={isLoading}
-            className="bg-navy-primary px-7.5 py-3"
+            className="bg-navy-primary border-navy-primary hover:bg-primary-positiva hover:border-primary-positiva px-7.5 py-3"
           />
           <CustomButton
             type="submit"

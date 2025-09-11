@@ -404,7 +404,7 @@ export default function ChangePasswordPage() {
             iconPosition="right"
             disabled={isLoading}
             loading={isLoading}
-            className="bg-navy-primary px-7.5 py-3"
+            className="bg-navy-primary border-navy-primary hover:bg-primary-positiva hover:border-primary-positiva px-7.5 py-3"
           />
           <CustomButton
             type="submit"

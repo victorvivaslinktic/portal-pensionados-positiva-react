@@ -82,16 +82,16 @@ export const SuccessDialog = forwardRef<HTMLDivElement, SuccessDialogProps>(func
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         ref={ref}
-        className={`max-h-[90vh] max-w-md overflow-y-auto px-6 py-8 ${
+        className={`max-h-[90vh] overflow-y-auto px-6 py-8 ${
           variant === "login"
             ? "rounded-2xl border-0 bg-white pr-0 pb-0 pl-0 shadow-lg lg:min-w-[942px]"
-            : ""
+            : "max-w-155.5"
         }`}
         aria-describedby={description ? "dialog-description" : undefined}
       >
         <DialogHeader className="text-center">
           {variant === "login" ? (
-            <div className="m-auto flex w-fit flex-row justify-center justify-items-center gap-5 pr-12 pl-12 align-middle">
+            <div className="m-auto flex h-21.5 w-fit flex-row justify-center justify-items-center gap-5 px-7.5 align-middle">
               <div className="max-w-[60px]">
                 <Image
                   src={getImageSrc()}
@@ -119,7 +119,7 @@ export const SuccessDialog = forwardRef<HTMLDivElement, SuccessDialogProps>(func
                 />
               </div>
 
-              <DialogTitle className="text-navy-primary font-poppins text-center text-3xl font-bold">
+              <DialogTitle className="text-navy-primary font-poppins text-center text-[32px] font-bold">
                 {title}
                 <div className="bg-primary-positiva mx-auto mt-3 h-1 w-16 rounded-full"></div>
               </DialogTitle>

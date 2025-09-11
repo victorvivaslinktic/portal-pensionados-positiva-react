@@ -86,7 +86,7 @@ export const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProp
       if (color === "primary") {
         return cn(
           baseClasses,
-          "bg-primary-positiva hover:bg-accent-positiva text-white",
+          "bg-primary-positiva border border-primary-positiva hover:border-navy-primary hover:bg-navy-primary text-white h-11",
           className
         );
       }

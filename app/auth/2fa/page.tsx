@@ -107,7 +107,7 @@ export default function TwoFAPage() {
       let translatedMessage = "Código inválido o expirado";
 
       if (errorMessage === "Invalid code") {
-        translatedMessage = "Código inválido";
+        translatedMessage = "El código no es valido, inténtalo de nuevo.";
       } else if (errorMessage === "Too many attempts") {
         translatedMessage =
           "Demasiados intentos. Por favor, intenta más tarde o inicia sesión nuevamente";
