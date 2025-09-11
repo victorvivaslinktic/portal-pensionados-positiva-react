@@ -4,9 +4,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { Hammer, Building, UserRound, MapPin, Facebook, Instagram, X, Youtube } from "lucide-react";
 import { redirections } from "@/lib/utils/redirections";
-import LogoFooter1 from "@/public/logo-co.svg";
-import LogoFooter2 from "@/public/Logotipo Gob-com.svg";
-import LogoBlancoPositiva from "@/public/positiva-header-logo.svg";
+import PuntosDeAtencion from "@/public/puntos-de-atencion-positiva.svg";
+import LogoBlancoPositiva from "@/public/positiva-logo-footer.svg";
+import IconContact from "@/public/contactanos-footer-positiva.svg";
+import LinkFooter from "../ui/linkFooter";
+import TitleFooter from "../ui/titleFooter";
+import FacebookIcon from "@/public/facebook.svg";
+import XIcon from "@/public/X-icon.svg";
+import InstagramIcon from "@/public/instagram.svg";
+import YoutubeIcon from "@/public/Youtube-icon.svg";
+import LogoMovil from "@/public/logo-movil-positiva.svg";
 
 export function Footer() {
   const { footer } = redirections;
@@ -22,159 +29,91 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[#0D2333] px-4 py-6 text-white sm:px-6 sm:py-8 md:px-8 md:py-10">
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-6 grid grid-cols-1 gap-6 border-b border-gray-700 pb-6 md:mb-8 md:gap-8 md:pb-8 lg:grid-cols-3">
-          <div>
-            <div className="mb-4 flex items-center space-x-2">
-              {renderIcon(footer.contact.icon)}
-              <h3 className="text-lg font-bold text-white">{footer.contact.title}</h3>
-            </div>
-            {footer.contact.items.map((item) => (
-              <div key={item.label} className="mb-2">
-                <p className="mb-2 text-sm">{item.label}</p>
-                {item.type === "email" ? (
-                  <Link
-                    href={item.href || "#"}
-                    className="mb-4 block text-sm text-orange-500 hover:underline"
-                  >
-                    {item.value}
-                  </Link>
-                ) : (
-                  <p className="mb-1 text-sm text-white">{item.value}</p>
-                )}
-              </div>
-            ))}
-          </div>
+    <footer className="text-white">
+      <div className="bg-[var(--navy-primary)] pt-[50px] pb-[30px]">
+        <div className="containerMaxWidth flex flex-col items-start gap-[40px] md:flex-row md:gap-[143px] ">
+          <div className="w-fit">
+            <Image
+              src={LogoMovil}
+              width={403}
+              height={60}
+              alt="Logo positiva móvil"
+              className="block xl:hidden"
+            />
 
-          <div>
-            <div className="mb-4 flex items-center space-x-2">
-              {renderIcon(footer.complaints.icon)}
-              <h3 className="text-lg font-bold text-white">{footer.complaints.title}</h3>
-            </div>
-            {footer.complaints.items.map((item, index) => (
-              <div key={index} className="mb-2">
-                <p className="mb-2 text-sm">{item.label}</p>
-                {item.type === "email" ? (
-                  <Link
-                    href={item.href || "#"}
-                    className="mb-2 block text-sm text-orange-500 hover:underline"
-                  >
-                    {item.value}
-                  </Link>
-                ) : item.type === "link" ? (
-                  <Link href={item.href || "#"} className="text-sm text-orange-500 hover:underline">
-                    {item.value}{" "}
-                    {item.emphasis && <span className="font-bold">{item.emphasis}</span>}
-                  </Link>
-                ) : (
-                  <p className="mb-1 text-sm text-white">{item.value}</p>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div>
-            <div className="mb-4 flex items-center space-x-2">
-              {renderIcon(footer.normative.icon)}
-              <h3 className="text-lg font-bold text-white">{footer.normative.title}</h3>
-            </div>
-            {footer.normative.items.map((item, index) => (
-              <div key={index} className="mb-2">
-                <p className="mb-2 text-sm">{item.label}</p>
-                <Link
-                  href={item.href}
-                  className="mb-2 block text-sm text-orange-500 hover:underline"
-                >
-                  {item.value}
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mb-6 grid grid-cols-1 gap-6 border-b border-gray-700 pb-6 md:mb-8 md:gap-8 md:pb-8 lg:grid-cols-2">
-          <div>
-            <div className="mb-4 flex items-center space-x-2">
-              {renderIcon(footer.administrative.icon)}
-              <h3 className="text-lg font-bold text-white">{footer.administrative.title}</h3>
-            </div>
-            <p className="mb-2 text-sm text-white">{footer.administrative.address}</p>
-            <p className="mb-4 text-sm text-white">
-              {footer.administrative.note}{" "}
-              <Link
-                href={footer.administrative.pointsOfAttentionLink}
-                className="text-orange-500 hover:underline"
-              >
-                puntos de atención
-              </Link>
-            </p>
-
-            <h3 className="mb-4 text-lg font-bold text-white">Redes sociales</h3>
-            <div className="flex space-x-3 sm:space-x-4">
-              {footer.social.networks.map((network) => (
-                <Link
-                  key={network.name}
-                  href={network.href}
-                  className="text-white hover:text-white"
-                >
-                  {network.icon === "Facebook" && <Facebook className="h-5 w-5 sm:h-6 sm:w-6" />}
-                  {network.icon === "Instagram" && <Instagram className="h-5 w-5 sm:h-6 sm:w-6" />}
-                  {network.icon === "X" && <X className="h-5 w-5 sm:h-6 sm:w-6" />}
-                  {network.icon === "Youtube" && <Youtube className="h-5 w-5 sm:h-6 sm:w-6" />}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center justify-center lg:items-end">
+            {/* Logo desktop */}
             <Image
               src={LogoBlancoPositiva}
-              alt="Positiva Compañía de Seguros"
-              width={200}
-              height={50}
-              className="mb-2 h-auto w-32 sm:w-40 md:w-48 lg:w-[200px]"
+              width={208}
+              height={40}
+              alt="Logo positiva blanco"
+              className="hidden xl:block"
             />
           </div>
-        </div>
 
-        <nav className="mb-4 flex flex-col items-center justify-between space-y-4 border-b border-gray-700 pb-4 text-sm text-white lg:flex-row lg:space-y-0">
-          <div className="flex flex-wrap justify-center space-x-2 text-center text-xs sm:space-x-4 sm:text-sm">
-            {footer.legal.map((link, index) => (
-              <div key={link.name + index}>
-                <Link href={link.href} className="hover:underline">
-                  {link.name}
-                </Link>
-                {index < footer.legal.length - 1 && <span className="h-4 bg-gray-700"></span>}
-              </div>
-            ))}
-            <span className="h-4 w-px bg-gray-700"></span>
-            <p className="text-white">Ultima actualización: {footer.lastUpdate}</p>
-          </div>
-          <div className="flex items-center space-x-2 sm:space-x-4">
-            <Image
-              src={LogoFooter1}
-              alt="Colombia Logo"
-              width={50}
-              height={28}
-              className="h-auto"
-            />
-            <span className="text-xs text-white">
-              {" "}
-              <Image
-                src={LogoFooter2}
-                alt="Logo de Gobierno de Colombia"
-                width={210}
-                height={48}
-                className="h-auto"
+          <div className="flex w-full flex-row gap-7  ">
+         
+            <div className="col-span-1 flex  flex-col gap-2.5 w-[36%]">
+              <TitleFooter text="Contáctanos" iconAlt="Icono de contacto" iconSrc={IconContact.src} />
+
+              <LinkFooter
+                description="Líneas gratuitas de atención nacional"
+                href="tel:+57018000111170"
+                linkText="01-8000-111-170"
               />
-            </span>
-          </div>
-        </nav>
+              <LinkFooter
+                description="Líneas de atención en Bogotá"
+                href="tel:+576013307000"
+                linkText=" +57 (601) 330 -7000"
+              />
+              <LinkFooter
+                description="Correo electrónico"
+                href="mailto:servicioalcliente@positiva.gov.co"
+                linkText="servicioalcliente@positiva.gov.co"
+              />
+            </div>
 
-        <div className="text-center text-xs text-white sm:text-sm">
-          © 2025 Positiva Compañía de Seguros. Todos los derechos reservados.
+          
+            <div className="col-span-1 flex flex-col gap-7 md:flex-row w-full md:justify-between  md:w-[60%]  ">
+              <div className="flex flex-col gap-2.5 md:w-[38%] ">
+                <TitleFooter
+                  text="Puntos de atención"
+                  iconAlt="Puntos de atencion"
+                  iconSrc={PuntosDeAtencion}
+                />
+
+                <LinkFooter
+                  description="Conoce todos nuestros puntos de atención y elige el más cercano a ti."
+                  addBreak={false}
+                  href="https://positiva.gov.co/canales-de-atencion/puntos-de-atencion/"
+                  linkText="¡Haz clic aquí!"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2.5 md:w-[147px]">
+                <TitleFooter text="Redes sociales" />
+
+                <div className="flex flex-nowrap gap-2">
+                  <Image src={FacebookIcon} width={31} height={30} alt="Facebook icono" />
+                  <Image src={InstagramIcon} width={31} height={30} alt="Instagram icono" />
+                  <Image src={XIcon} width={31} height={30} alt="X icono" />
+                  <Image src={YoutubeIcon} width={31} height={30} alt="Youtube icono" />
+                </div>
+                <a
+                  href="https://www.positiva.gov.co"
+                  className="mt-[-5px] text-sm font-semibold text-[var(--primary-positiva)] underline"
+                >
+                  www.positiva.gov.co
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      {/* Footer bottom */}
+      <div className="flex justify-center bg-[#0D2333] px-[10px] py-[15px] text-[12px] md:text-[14px]">
+        <h4>© 2025 Positiva Compañía de Seguros. Todos los derechos reservados. HOLA</h4>
       </div>
     </footer>
   );
