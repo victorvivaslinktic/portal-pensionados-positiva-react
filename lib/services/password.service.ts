@@ -2,6 +2,8 @@ import {
   PasswordResetRequest,
   PasswordResetConfirm,
   PasswordResetResponse,
+  PasswordChangeConfirm,
+  PasswordChangeResponse,
 } from "@/lib/types/auth.types";
 
 const API_URL =
@@ -61,6 +63,52 @@ export class PasswordService {
       return data;
     } catch (error) {
       console.error("Error confirming password reset:", error);
+      throw error;
+    }
+  }
+
+  async requestPasswordChange(request: PasswordResetRequest): Promise<PasswordResetResponse> {
+    try {
+      const response = await fetch(`${API_URL}/api/password/reset/request`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(request),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Error al solicitar el cambio de contraseña");
+      }
+
+      return data;
+    } catch (error) {
+      console.error("Error requesting password change:", error);
+      throw error;
+    }
+  }
+
+  async confirmPasswordChange(confirm: PasswordChangeConfirm): Promise<PasswordChangeResponse> {
+    try {
+      const response = await fetch(`${API_URL}/api/password/reset/confirm`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(confirm),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Error al confirmar el cambio de contraseña");
+      }
+
+      return data as PasswordChangeResponse;
+    } catch (error) {
+      console.error("Error confirming password change:", error);
       throw error;
     }
   }

@@ -103,7 +103,7 @@ export default function LoginPage() {
       }
 
       if (response.access_token) {
-        toast.success("Login exitoso", "Bienvenido al portal");
+        toast.success("Bienvenido/a", "a nuestro portal Positiva Pensionados");
         router.push("/");
       }
     } catch (error: unknown) {
@@ -138,7 +138,7 @@ export default function LoginPage() {
     setSuccessDescription(
       `
       <div class="flex gap-7.5 flex-col">
-        <p class="font-normal text-base font-roboto text-navy-primary">Si ya eres afiliado y aún no tienes una cuenta en nuestro <span class="font-bold">Portal de Positiva Pensionados</span>, puedes solicitar la creación de tu cuenta enviando un correo a <a href="mailto:servicioalcliente@positiva.gov.co" class="underline text-primary-positiva font-bold" target="_blank">servicioalcliente@positiva.gov.co</a> con el asunto: <span class="font-bold">"Creación de Cuenta Portal Positiva Pensionados”,</span> indicando los siguientes datos:<p> 
+        <p class="font-normal text-base font-roboto text-navy-primary">Si ya eres afiliado y aún no tienes una cuenta en nuestro <span class="font-bold">Portal de Positiva Pensionados</span>, puedes solicitar la creación de tu cuenta enviando un correo a <a href="mailto:servicioalcliente@positiva.gov.co" class="underline text-primary-positiva font-bold" target="_blank">servicioalcliente@positiva.gov.co</a> con el asunto: <span class="font-bold">"Creación de Cuenta Portal Positiva Pensionados”,</span> indicando los siguientes datos:</p>
         <div class="w-full flex justify-center items-center">
           <ul class="ulModalLogin">
             <li class="liModalLogin">Nombre completo.</li>
@@ -258,6 +258,10 @@ export default function LoginPage() {
                   disabled={isLoading}
                   placeholder="Ingresa tu número de documento"
                   className={documentForm.formState.errors.document_number ? "border-red-500" : ""}
+                  onInput={(e) => {
+                    const target = e.target as HTMLInputElement;
+                    target.value = target.value.replace(/[^0-9]/g, "");
+                  }}
                 />
                 {documentForm.formState.errors.document_number && (
                   <p className="mt-1 text-sm text-red-500">

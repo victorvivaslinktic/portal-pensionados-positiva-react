@@ -96,6 +96,17 @@ export interface PasswordResetConfirm {
   new_password: string;
 }
 
+export interface PasswordChangeConfirm {
+  token: string;
+  new_password: string;
+}
+
+export interface PasswordChangeResponse {
+  message: string;
+  access_token?: string;
+  refresh_token?: string;
+}
+
 // Tipos de documentos
 export interface SendDocumentRequest {
   type: "CIR" | "CVP" | "DPP";

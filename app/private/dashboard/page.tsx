@@ -88,6 +88,7 @@ export default function DashboardPage() {
         setSuccessVariant("success");
         setSuccessTitle("Se ha enviado el certificado a su correo electrónico");
         setSuccessDescription("");
+        setSuccessGridContent(null);
       } else {
         setSuccessVariant("error");
         setSuccessTitle("El certificado no fue encontrado");
@@ -150,7 +151,7 @@ export default function DashboardPage() {
   const handleLogout = async () => {
     setIsLoggingOut(true);
 
-    toast.info("Cerrando sesión...", "Te estamos desconectando del portal.");
+    toast.info("Cerrando sesión...", "Gracias por usar nuestros servicios.");
 
     try {
       await authService.logout();
@@ -181,7 +182,7 @@ export default function DashboardPage() {
       <div className="backgroundPensionados flex min-h-[209px] w-full items-center md:min-h-[204px]">
         <div className="containerMaxWidth mb-6 flex w-full flex-col items-end space-y-4 px-[16px] sm:mb-8 sm:flex-row sm:items-center sm:justify-between sm:space-y-0 md:px-0">
           <div className="w-full flex-1">
-            <h1 className="mb-2 text-[24px] font-bold text-balance text-gray-800">
+            <h1 className="text-[24px] font-bold text-balance text-gray-800">
               Hola, bienvenido a tu portal
             </h1>
             <p className="text-primary-positiva text-2xl font-bold text-balance sm:text-3xl lg:text-4xl">

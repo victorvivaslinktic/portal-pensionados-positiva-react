@@ -149,6 +149,8 @@ export default function VerifyConfirmPage() {
             src={IconReload.src}
             alt=""
             className={`h-4 w-4 ${isResending ? "animate-spin" : ""}`}
+            width={20}
+            height={20}
           />
           <span>{isResending ? "Reenviando..." : "Reenviar código"}</span>
         </button>
