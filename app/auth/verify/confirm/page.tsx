@@ -121,9 +121,9 @@ export default function VerifyConfirmPage() {
             })}
             disabled={isLoading}
             placeholder="Ingresa el código de verificación"
-            className={errors.token ? "border-red-500" : ""}
+            className={errors.token ? "border-red-positiva" : ""}
           />
-          {errors.token && <p className="mt-1 text-sm text-red-500">{errors.token.message}</p>}
+          {errors.token && <p className="text-red-positiva mt-1 text-sm">{errors.token.message}</p>}
         </div>
 
         <div className="flex w-full justify-center">
@@ -145,7 +145,6 @@ export default function VerifyConfirmPage() {
           disabled={isResending}
           className="text-primary-positiva font-roboto flex items-center justify-center gap-2 text-lg font-bold hover:underline"
         >
-          {/* <RotateCcw className={`h-4 w-4 ${isResending ? "animate-spin" : ""}`} /> */}
           <Image
             src={IconReload.src}
             alt=""
@@ -160,7 +159,6 @@ export default function VerifyConfirmPage() {
           onClick={handleBack}
           className="text-primary-positiva font-roboto flex items-center justify-center gap-2 text-lg font-bold hover:underline"
         >
-          {/* <ArrowLeft className="h-4 w-4" /> */}
           <Image src={IconArrowLeft.src} alt="" className="h-3.5 w-4.5" width={18} height={18} />
           <span>Volver</span>
         </button>

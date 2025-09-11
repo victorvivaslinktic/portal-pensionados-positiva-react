@@ -9,6 +9,9 @@ import {
 } from "@/components/ui/dialog";
 import Image from "next/image";
 import { forwardRef } from "react";
+import ImageNotFoundModal from "@/public/notfound.png";
+import ImageLoginModal from "@/public/login-modal.png";
+import ImageSuccessModal from "@/public/success.png";
 
 interface SuccessDialogProps {
   open: boolean;
@@ -35,10 +38,10 @@ export const SuccessDialog = forwardRef<HTMLDivElement, SuccessDialogProps>(func
 ) {
   const getImageSrc = () => {
     return variant === "error"
-      ? "/notfound.png"
+      ? ImageNotFoundModal.src
       : variant === "login"
-        ? "/login-modal.png"
-        : "/success.png";
+        ? ImageLoginModal.src
+        : ImageSuccessModal.src;
   };
 
   const getImageAlt = () => {
@@ -89,7 +92,7 @@ export const SuccessDialog = forwardRef<HTMLDivElement, SuccessDialogProps>(func
         <DialogHeader className="text-center">
           {variant === "login" ? (
             <div className="m-auto flex w-fit flex-row justify-center justify-items-center gap-5 pr-12 pl-12 align-middle">
-              <div className="max-w-[60px]">
+              <div className="max-w-15">
                 <Image
                   src={getImageSrc()}
                   alt={getImageAlt()}
@@ -99,9 +102,9 @@ export const SuccessDialog = forwardRef<HTMLDivElement, SuccessDialogProps>(func
                 />
               </div>
 
-              <DialogTitle className="text-navy-primary font-poppins h-12 w-fit text-2xl font-bold">
+              <DialogTitle className="text-navy-primary font-poppins w-fit text-[32px] font-bold">
                 {title}
-                <div className="bg-primary-positiva mt-3 h-1 w-16 rounded-full"></div>
+                <div className="bg-primary-positiva mt-1.25 h-1.25 w-15 rounded-full"></div>
               </DialogTitle>
             </div>
           ) : (

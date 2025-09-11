@@ -136,19 +136,26 @@ export default function LoginPage() {
     setSuccessVariant("login");
     setSuccessTitle("¿No tienes cuenta?");
     setSuccessDescription(
-      `Si ya eres afiliado y aún no tienes una cuenta en nuestro Portal de Positiva Pensionados, puedes solicitar la creación de tu cuenta enviando un correo a <a href="mailto:servicioalcliente@positiva.gov.co" class="underline text-[var(--primary-positiva)]" target="_blank">servicioalcliente@positiva.gov.co</a> con el asunto: <b>Creación de Cuenta Portal Positiva Pensionados”,</b> indicando los siguientes datos:
-      <br><br> 
-      <ul class="ulModalLogin">
-      <li class="liModalLogin">Nombre completo.</li>
-      <li class="liModalLogin">Tipo y número de documento.</li>
-      <li class="liModalLogin">Teléfono de contacto.</li>
-      <li class="liModalLogin">Correo electrónico.</li>
-      </ul>
-       <br> <br> Uno de nuestros asesores verificará tu información y se encargará de realizar tu registro en el portal. 1`
+      `
+      <div class="flex gap-7.5 flex-col">
+        <p class="font-normal text-base font-roboto text-navy-primary">Si ya eres afiliado y aún no tienes una cuenta en nuestro <span class="font-bold">Portal de Positiva Pensionados</span>, puedes solicitar la creación de tu cuenta enviando un correo a <a href="mailto:servicioalcliente@positiva.gov.co" class="underline text-primary-positiva font-bold" target="_blank">servicioalcliente@positiva.gov.co</a> con el asunto: <span class="font-bold">"Creación de Cuenta Portal Positiva Pensionados”,</span> indicando los siguientes datos:<p> 
+        <div class="w-full flex justify-center items-center">
+          <ul class="ulModalLogin">
+            <li class="liModalLogin">Nombre completo.</li>
+            <li class="liModalLogin">Tipo y número de documento.</li>
+            <li class="liModalLogin">Teléfono de contacto.</li>
+            <li class="liModalLogin">Correo electrónico.</li>
+          </ul>
+        </div>
+        <p class="font-normal text-base font-roboto text-navy-primary">
+          Uno de nuestros asesores verificará tu información y se encargará de realizar tu registro en el portal.
+        </p>
+      </div>
+      `
     );
     setSuccessGridContent(
       <>
-        <div className="z-2 rounded-br-2xl rounded-bl-2xl bg-[var(--navy-primary)] py-[20px] pr-[16px] pl-[16px] sm:pr-12 sm:pl-12">
+        <div className="font-roboto bg-navy-primary z-2 rounded-br-2xl rounded-bl-2xl py-5 pr-4 pl-4 sm:pr-12 sm:pl-12">
           <p className="text-center text-base text-white">
             Si lo prefieres, también puedes comunicarte a nuestras líneas de atención gratuitas para
             recibir asistencia en el proceso:
@@ -156,14 +163,14 @@ export default function LoginPage() {
           <div className="grid grid-cols-2">
             <p className="font-roboto mt-4 text-center text-base leading-6 font-semibold text-white">
               Línea de atención nacional: <br />
-              <span className="cursor-pointer font-semibold text-[var(--primary-positiva)] underline">
+              <span className="text-primary-positiva cursor-pointer font-bold underline">
                 01 8000 11 1170
               </span>
             </p>
 
             <p className="font-roboto mt-4 text-center text-base leading-6 font-semibold text-white">
               Línea de atención en Bogotá: <br />
-              <span className="cursor-pointer text-[var(--primary-positiva)] underline">
+              <span className="text-primary-positiva cursor-pointer font-bold underline">
                 (+57) 601 3307000
               </span>
             </p>
