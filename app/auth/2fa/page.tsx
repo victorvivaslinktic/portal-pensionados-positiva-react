@@ -10,6 +10,9 @@ import { authService } from "@/lib/services/auth.service";
 import { useAuthStore } from "@/lib/stores/auth.store";
 import { toast } from "@/lib/stores/toast-store";
 import Image from "next/image";
+import IconReload from "@/public/icon-reload.svg";
+import IconBoton from "@/public/botton-icon.svg";
+import IconArrow from "@/public/arrow-positiva.svg";
 
 type TwoFAFormData = {
   code: string;
@@ -151,7 +154,7 @@ export default function TwoFAPage() {
     <AuthCard
       title={
         <>
-          Código de <span className="text-orange-500">verificación</span>
+          Código de <span className="text-primary-positiva">verificación</span>
         </>
       }
       subtitle="Por favor ingresa el código de verificación enviado a tu correo electrónico"
@@ -217,7 +220,7 @@ export default function TwoFAPage() {
         <CustomButton
           type="submit"
           name="Validar Código"
-          icon={<Image src="/botton-icon.svg" alt="icon" width={18} height={18} />}
+          icon={<Image src={IconBoton.src} alt="icon" width={18} height={18} />}
           disabled={isLoading || !code || code.length !== 6 || timeLeft === 0}
           loading={isLoading}
           iconPosition="right"
@@ -230,7 +233,7 @@ export default function TwoFAPage() {
           disabled={isResending}
           className="text-primary-positiva font-roboto mx-auto flex items-center justify-center space-x-2 font-bold hover:underline disabled:opacity-50"
         >
-          <Image src="/icon-reload.svg" alt="icon" width={18} height={18} />
+          <Image src={IconReload.src} alt="icon" width={18} height={18} />
           <span>{isResending ? "Reenviando..." : "Reenviar código"}</span>
         </button>
       </div>
@@ -240,7 +243,7 @@ export default function TwoFAPage() {
           onClick={handleBack}
           className="text-primary-positiva font-roboto mx-auto flex items-center justify-center space-x-2 font-bold hover:underline"
         >
-          <Image src="/arrow-positiva.svg" alt="icon" width={18} height={18} />
+          <Image src={IconArrow.src} alt="icon" width={18} height={18} />
           <span>Volver al inicio de sesión</span>
         </button>
       </div>

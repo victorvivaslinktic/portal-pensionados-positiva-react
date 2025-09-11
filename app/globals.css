@@ -203,19 +203,19 @@ button:disabled {
 }
 
 .container-main {
-  background-image: url("/banner-portal-pensionados.jpg");
+  background-image: url("/portal-pensionados/banner-portal-pensionados.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  min-height: 100dvh;
+  /* min-height: 100dvh; */
   width: 100%;
 }
 .font-poppins {
   font-family: var(--font-poppins) !important;
 }
 .font-roboto {
-  font-family: Roboto;
+  font-family: "Roboto";
 }
 .toatsStyle {
   width: 540px !important;

@@ -21,6 +21,12 @@ import { useAuthStore } from "@/lib/stores/auth.store";
 import { toast } from "@/lib/stores/toast-store";
 import { DOCUMENT_TYPES } from "@/lib/types/auth.types";
 import { SuccessDialog } from "@/components/ui/success-dialog";
+import IconDocument from "@/public/icon-document.svg";
+import IconMail from "@/public/icon-mail.svg";
+import IconPadLock from "@/public/icon-padlock.svg";
+import IconEyeHide from "@/public/icon-eye-hide.svg";
+import IconEyeShow from "@/public/icon-eye-show.svg";
+import Image from "next/image";
 
 type DocumentLoginFormData = {
   document_number: string;
@@ -173,7 +179,8 @@ export default function LoginPage() {
       title={
         <>
           <span>
-            Bienvenido al <span className="font-bold text-orange-500">Portal Pensionados</span>
+            Bienvenido al{" "}
+            <span className="text-primary-positiva font-bold">Portal Pensionados</span>
           </span>
         </>
       }
@@ -191,11 +198,11 @@ export default function LoginPage() {
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="mb-7.5 grid w-full grid-cols-2">
           <TabsTrigger value="document" className="flex items-center space-x-2">
-            <img src="/icon-document.svg" alt="icon-mail" />
+            <Image src={IconDocument.src} alt="icon-mail" width={28} height={20} loading="lazy" />
             <span className="font-poppins text-[16px] leading-[24px] font-semibold">Documento</span>
           </TabsTrigger>
           <TabsTrigger value="email" className="flex items-center space-x-2">
-            <img src="/icon-mail.svg" alt="icon-mail" />
+            <Image src={IconMail.src} alt="icon-mail" width={23} height={20} loading="lazy" />
             <span className="font-poppins text-[16px] leading-[24px] font-semibold">Correo</span>
           </TabsTrigger>
         </TabsList>
@@ -242,7 +249,7 @@ export default function LoginPage() {
                     required: "El número de documento es requerido",
                   })}
                   disabled={isLoading}
-                  placeholder="Número de documento"
+                  placeholder="Ingresa tu número de documento"
                   className={documentForm.formState.errors.document_number ? "border-red-500" : ""}
                 />
                 {documentForm.formState.errors.document_number && (
@@ -261,17 +268,19 @@ export default function LoginPage() {
                 Contraseña*
               </Label>
               <div className="relative">
-                <img
-                  src="/icon-padlock.svg"
+                <Image
+                  src={IconPadLock.src}
                   alt="icon-padlock"
                   className="absolute top-1/2 left-4.75 -translate-y-1/2 transform"
+                  width={14.97}
+                  height={19.25}
                 />
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
                   {...documentForm.register("password", { required: "La contraseña es requerida" })}
                   disabled={isLoading}
-                  placeholder="Tu contraseña"
+                  placeholder="Ingresa tu contraseña"
                   className={`px-11.75 ${documentForm.formState.errors.password ? "border-red-positiva" : ""}`}
                 />
                 <button
@@ -279,10 +288,12 @@ export default function LoginPage() {
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute top-1/2 right-3 -translate-y-1/2 transform text-gray-400 hover:text-gray-600"
                 >
-                  <img
-                    src={showPassword ? "/icon-eye-hide.svg" : "/icon-eye-show.svg"}
+                  <Image
+                    src={showPassword ? IconEyeHide.src : IconEyeShow.src}
                     alt="icon-mail"
                     className=""
+                    width={20}
+                    height={18}
                   />
                 </button>
               </div>
@@ -322,7 +333,7 @@ export default function LoginPage() {
                   },
                 })}
                 disabled={isLoading}
-                placeholder="tu@email.com"
+                placeholder="Ingresa tu correo electrónico"
                 className={emailForm.formState.errors.email ? "border-red-500" : ""}
               />
               {emailForm.formState.errors.email && (
@@ -340,17 +351,19 @@ export default function LoginPage() {
                 Contraseña*
               </Label>
               <div className="relative">
-                <img
-                  src="/icon-padlock.svg"
+                <Image
+                  src={IconPadLock.src}
                   alt="icon-padlock"
                   className="absolute top-1/2 left-4.75 -translate-y-1/2 transform"
+                  width={14.97}
+                  height={19.25}
                 />
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
                   {...emailForm.register("password", { required: "La contraseña es requerida" })}
                   disabled={isLoading}
-                  placeholder="Tu contraseña"
+                  placeholder="Ingresa tu contraseña"
                   className={`px-11.75 ${emailForm.formState.errors.password ? "border-red-positiva" : ""}`}
                 />
                 <button
@@ -358,10 +371,12 @@ export default function LoginPage() {
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute top-1/2 right-3 -translate-y-1/2 transform text-gray-400 hover:text-gray-600"
                 >
-                  <img
-                    src={showPassword ? "/icon-eye-hide.svg" : "/icon-eye-show.svg"}
+                  <Image
+                    src={showPassword ? IconEyeHide.src : IconEyeShow.src}
                     alt="icon-mail"
                     className=""
+                    width={20}
+                    height={18}
                   />
                 </button>
               </div>

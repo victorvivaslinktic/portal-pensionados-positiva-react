@@ -181,17 +181,17 @@ export default function DashboardPage() {
       <div className="backgroundPensionados flex min-h-[209px] w-full items-center md:min-h-[204px]">
         <div className="containerMaxWidth mb-6 flex w-full flex-col items-end space-y-4 px-[16px] sm:mb-8 sm:flex-row sm:items-center sm:justify-between sm:space-y-0 md:px-0">
           <div className="w-full flex-1">
-            <h1 className="mb-2 text-2xl font-bold text-balance text-gray-800 md:text-3xl">
+            <h1 className="mb-2 text-[24px] font-bold text-balance text-gray-800">
               Hola, bienvenido a tu portal
             </h1>
-            <p className="text-2xl font-bold text-balance text-orange-500 sm:text-3xl lg:text-4xl">
+            <p className="text-primary-positiva text-2xl font-bold text-balance sm:text-3xl lg:text-4xl">
               {normalizeNameForDisplay(user.first_name)} {normalizeNameForDisplay(user.last_name)}
             </p>
           </div>
           <button
             onClick={handleLogout}
             disabled={isLoggingOut || isLoading !== null}
-            className="font-roboto flex w-full cursor-pointer items-center justify-center space-x-2 rounded-md bg-orange-500 px-8 py-2.5 text-base font-semibold text-white transition-colors hover:bg-orange-600 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:px-6"
+            className="font-roboto bg-primary-positiva flex w-full cursor-pointer items-center justify-center space-x-2 rounded-md px-7.5 py-2 text-base font-semibold text-white transition-colors hover:bg-orange-600 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:px-6"
             aria-label="Cerrar sesión y volver al login"
           >
             {isLoggingOut ? (
@@ -220,10 +220,10 @@ export default function DashboardPage() {
         />
 
         <section className="w-full bg-white py-10 md:pt-13 md:pb-26">
-          <div className="containerMaxWidth m-auto mx-auto flex w-full max-w-screen-2xl flex-col justify-between gap-5 lg:flex-row">
+          <div className="containerMaxWidth m-auto mx-auto flex w-full max-w-screen-2xl flex-col justify-between gap-3.25 lg:flex-row">
             <h2 className="mb-10 max-w-2xs text-2xl font-bold text-balance text-gray-800 sm:mb-6 md:text-3xl">
               Certificados de pensionados
-              <div className="mt-2 w-20 rounded-full bg-orange-500 py-[3px]"></div>
+              <div className="bg-primary-positiva mt-2 w-20 rounded-full py-[3px]"></div>
             </h2>
 
             <div className="grid w-full gap-7 md:grid-cols-3">

@@ -101,7 +101,7 @@ export const SuccessDialog = forwardRef<HTMLDivElement, SuccessDialogProps>(func
 
               <DialogTitle className="text-navy-primary font-poppins h-12 w-fit text-2xl font-bold">
                 {title}
-                <div className="mt-3 h-1 w-16 rounded-full bg-orange-500"></div>
+                <div className="bg-primary-positiva mt-3 h-1 w-16 rounded-full"></div>
               </DialogTitle>
             </div>
           ) : (
@@ -118,7 +118,7 @@ export const SuccessDialog = forwardRef<HTMLDivElement, SuccessDialogProps>(func
 
               <DialogTitle className="text-navy-primary font-poppins text-center text-3xl font-bold">
                 {title}
-                <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-orange-500"></div>
+                <div className="bg-primary-positiva mx-auto mt-3 h-1 w-16 rounded-full"></div>
               </DialogTitle>
             </>
           )}
