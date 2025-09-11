@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 export function generateSecurePassword(length = 16): string {
   const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const LOWER = "abcdefghijklmnopqrstuvwxyz";

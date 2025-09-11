@@ -138,7 +138,7 @@ export default function LoginPage() {
     setSuccessDescription(
       `
       <div class="flex gap-7.5 flex-col">
-        <p class="font-normal text-base font-roboto text-navy-primary">Si ya eres afiliado y aún no tienes una cuenta en nuestro <span class="font-bold">Portal de Positiva Pensionados</span>, puedes solicitar la creación de tu cuenta enviando un correo a <a href="mailto:servicioalcliente@positiva.gov.co" class="underline text-primary-positiva font-bold" target="_blank">servicioalcliente@positiva.gov.co</a> con el asunto: <span class="font-bold">"Creación de Cuenta Portal Positiva Pensionados”,</span> indicando los siguientes datos:<p> 
+        <p class="font-normal text-base font-roboto text-navy-primary">Si ya eres afiliado y aún no tienes una cuenta en nuestro <span class="font-bold">Portal de Positiva Pensionados</span>, puedes solicitar la creación de tu cuenta enviando un correo a <a href="mailto:servicioalcliente@positiva.gov.co" class="underline text-primary-positiva font-bold" target="_blank">servicioalcliente@positiva.gov.co</a> con el asunto: <span class="font-bold">"Creación de Cuenta Portal Positiva Pensionados”,</span> indicando los siguientes datos:</p>
         <div class="w-full flex justify-center items-center">
           <ul class="ulModalLogin">
             <li class="liModalLogin">Nombre completo.</li>

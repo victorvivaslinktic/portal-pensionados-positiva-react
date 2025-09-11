@@ -1,10 +1,11 @@
 import { useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useAuthStore } from "@/lib/stores/auth.store";
 import { authService } from "@/lib/services/auth.service";
 
 export function useAuthCheck() {
   const router = useRouter();
+  const pathname = usePathname();
   const { isAuthenticated, tokens, logout } = useAuthStore();
   const isCheckingRef = useRef(false);
 
@@ -28,7 +29,35 @@ export function useAuthCheck() {
           return;
         }
 
-        if (authService.isTokenExpired(currentState.tokens.access)) {
+        const accessToken = currentState.tokens.access;
+
+        try {
+          const payload = JSON.parse(atob(accessToken.split(".")[1])) as Record<string, unknown>;
+          const requiresPasswordChange = Boolean(
+            (payload as Record<string, unknown>).force_password_change
+          );
+          const requiresDataUpdate = Boolean((payload as Record<string, unknown>).data_update);
+
+          if (requiresPasswordChange && pathname !== "/auth/change-password") {
+            useAuthStore.getState().setCurrentStep("reset");
+            router.push("/auth/change-password");
+            return;
+          }
+
+          if (
+            requiresDataUpdate &&
+            pathname !== "/auth/update" &&
+            !pathname?.startsWith("/auth/")
+          ) {
+            useAuthStore.getState().setCurrentStep("update");
+            router.push("/auth/update");
+            return;
+          }
+        } catch {
+          console.log("Error decoding access token");
+        }
+
+        if (authService.isTokenExpired(accessToken)) {
           console.log("Access token expired, attempting refresh...");
           const refreshToken = currentState.tokens.refresh;
           if (!refreshToken || authService.isTokenExpired(refreshToken)) {

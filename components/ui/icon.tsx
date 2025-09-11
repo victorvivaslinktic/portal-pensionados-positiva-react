@@ -1,4 +1,3 @@
-/* eslint-disable */
 "use client";
 
 import React from "react";
@@ -39,7 +38,7 @@ export const Icon: React.FC<IconProps> = ({
       : undefined;
 
   return (
-    <svg className={className} style={style} {...ariaProps} >
+    <svg className={className} style={style} {...ariaProps}>
       {/* Para React moderno basta href. Si necesitas compat: xlinkHref */}
       <use href={`${spritePath}#${name}`} />
     </svg>

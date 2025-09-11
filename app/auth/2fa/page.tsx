@@ -20,7 +20,15 @@ type TwoFAFormData = {
 
 export default function TwoFAPage() {
   const router = useRouter();
-  const { transactionId, expiresIn, setCurrentStep, login, loginData } = useAuthStore();
+  const {
+    transactionId,
+    expiresIn,
+    setCurrentStep,
+    login,
+    loginData,
+    setTransactionId,
+    setExpiresIn,
+  } = useAuthStore();
   const [isLoading, setIsLoading] = useState(false);
   const [isResending, setIsResending] = useState(false);
   const [timeLeft, setTimeLeft] = useState(expiresIn || 300);
@@ -77,6 +85,12 @@ export default function TwoFAPage() {
           data_update: payload.data_update,
         });
 
+        if (payload.force_password_change) {
+          setCurrentStep("reset");
+          router.push("/auth/change-password");
+          return;
+        }
+
         if (payload.data_update) {
           setCurrentStep("update");
           router.push("/auth/update");
@@ -118,6 +132,8 @@ export default function TwoFAPage() {
 
       if (response.two_factor_required && response.transaction_id) {
         setCurrentStep("2fa");
+        setTransactionId(response.transaction_id);
+        setExpiresIn(response.expires_in || 300);
         setTimeLeft(response.expires_in || 300);
         toast.success("Código reenviado", "Revisa tu correo electrónico nuevamente");
       } else {

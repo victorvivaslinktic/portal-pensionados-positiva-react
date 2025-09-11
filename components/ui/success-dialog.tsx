@@ -82,7 +82,7 @@ export const SuccessDialog = forwardRef<HTMLDivElement, SuccessDialogProps>(func
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         ref={ref}
-        className={`max-w-md px-6 py-8 ${
+        className={`max-h-[90vh] max-w-md overflow-y-auto px-6 py-8 ${
           variant === "login"
             ? "rounded-2xl border-0 bg-white pr-0 pb-0 pl-0 shadow-lg lg:min-w-[942px]"
             : ""
@@ -92,7 +92,7 @@ export const SuccessDialog = forwardRef<HTMLDivElement, SuccessDialogProps>(func
         <DialogHeader className="text-center">
           {variant === "login" ? (
             <div className="m-auto flex w-fit flex-row justify-center justify-items-center gap-5 pr-12 pl-12 align-middle">
-              <div className="max-w-15">
+              <div className="max-w-[60px]">
                 <Image
                   src={getImageSrc()}
                   alt={getImageAlt()}
@@ -104,7 +104,7 @@ export const SuccessDialog = forwardRef<HTMLDivElement, SuccessDialogProps>(func
 
               <DialogTitle className="text-navy-primary font-poppins w-fit text-[32px] font-bold">
                 {title}
-                <div className="bg-primary-positiva mt-1.25 h-1.25 w-15 rounded-full"></div>
+                <div className="bg-primary-positiva mt-1.5 h-1.5 w-16 rounded-full"></div>
               </DialogTitle>
             </div>
           ) : (

@@ -67,12 +67,12 @@
   --navy-secondary: #123249;
   --custom-color-gray: #747474;
   --custom-color-label-inputs: #5d6977;
-  --custom-gray-border-inputs: #D9DCE3;
-  --custom-color-green-positiva: #39BA2E;
+  --custom-gray-border-inputs: #d9dce3;
+  --custom-color-green-positiva: #39ba2e;
   --custom-color-red-positiva: #e60003;
-  --custom-color-green-state: #D0F3CD;
-  --custom-color-yellow-state: #FCE9B8;
-  --custom-color-red-state: #FDC8C9;
+  --custom-color-green-state: #d0f3cd;
+  --custom-color-yellow-state: #fce9b8;
+  --custom-color-red-state: #fdc8c9;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -281,7 +281,8 @@ li.toast-info.toatsStyle:before {
   background: #ffb800;
 }
 .backgroundPensionados {
-  background: url("/portal-pensionados/banner-bakground-posiitva.svg") center center / cover no-repeat;
+  background: url("/portal-pensionados/banner-bakground-posiitva.svg") center center / cover
+    no-repeat;
 }
 
 .containerMaxWidth {
