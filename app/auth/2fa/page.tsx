@@ -170,7 +170,7 @@ export default function TwoFAPage() {
                 setStatus("normal");
               }}
               disabled={isLoading || timeLeft === 0}
-              className="max-w-[486px] gap-[30px]"
+              className="gap-[30px]"
             >
               <InputOTPGroup className="gap-2 md:gap-[30px]">
                 <InputOTPSlot
@@ -211,8 +211,8 @@ export default function TwoFAPage() {
               Tiempo restante: <span className="font-mono font-bold">{formatTime(timeLeft)}</span>
             </p>
           ) : (
-            <p className="text-center text-sm text-red-600">
-              El código ha expirado. Por favor, inicia sesión nuevamente.
+            <p className="text-red-positiva text-center text-sm">
+              El código ha expirado. Por favor, da clic en la opción reenviar código.
             </p>
           )}
         </div>

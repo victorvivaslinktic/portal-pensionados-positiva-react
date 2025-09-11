@@ -281,7 +281,7 @@ li.toast-info.toatsStyle:before {
   background: #ffb800;
 }
 .backgroundPensionados {
-  background: url("/banner-bakground-posiitva.svg") center center / cover no-repeat;
+  background: url("/portal-pensionados/banner-bakground-posiitva.svg") center center / cover no-repeat;
 }
 
 .containerMaxWidth {
@@ -290,11 +290,13 @@ li.toast-info.toatsStyle:before {
 }
 .ulModalLogin {
   flex-direction: row !important;
-  gap: 42px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 40px !important;
   width: 100% !important;
   margin: auto;
   display: flex !important;
-  margin-left: 3em;
+  /* margin-left: 3em; */
 }
 .liModalLogin {
   list-style-type: disc;

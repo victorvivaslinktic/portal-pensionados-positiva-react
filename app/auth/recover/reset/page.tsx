@@ -282,6 +282,7 @@ export default function ResetPage() {
 
         <div className="flex w-full justify-evenly gap-5">
           <CustomButton
+            type="button"
             onClick={handleGeneratePassword}
             name="Generar una constraseña"
             iconPosition="right"
