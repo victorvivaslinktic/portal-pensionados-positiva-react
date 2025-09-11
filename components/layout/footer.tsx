@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
+// import Link from "next/link";
 import Image from "next/image";
-import { Hammer, Building, UserRound, MapPin, Facebook, Instagram, X, Youtube } from "lucide-react";
-import { redirections } from "@/lib/utils/redirections";
+// import { Hammer, Building, UserRound, MapPin, Facebook, Instagram, X, Youtube } from "lucide-react";
+// import { redirections } from "@/lib/utils/redirections";
 import PuntosDeAtencion from "@/public/puntos-de-atencion-positiva.svg";
 import LogoBlancoPositiva from "@/public/positiva-logo-footer.svg";
 import IconContact from "@/public/contactanos-footer-positiva.svg";
@@ -16,22 +16,22 @@ import YoutubeIcon from "@/public/Youtube-icon.svg";
 import LogoMovil from "@/public/logo-movil-positiva.svg";
 
 export function Footer() {
-  const { footer } = redirections;
+  // const { footer } = redirections;
 
-  const renderIcon = (iconName: string) => {
-    const icons = {
-      Building: <Building className="h-6 w-6 text-orange-500" />,
-      Hammer: <Hammer className="h-6 w-6 text-orange-500" />,
-      UserRound: <UserRound className="h-6 w-6 text-orange-500" />,
-      MapPin: <MapPin className="h-6 w-6 text-orange-500" />,
-    };
-    return icons[iconName as keyof typeof icons];
-  };
+  // const renderIcon = (iconName: string) => {
+  //   const icons = {
+  //     Building: <Building className="h-6 w-6 text-orange-500" />,
+  //     Hammer: <Hammer className="h-6 w-6 text-orange-500" />,
+  //     UserRound: <UserRound className="h-6 w-6 text-orange-500" />,
+  //     MapPin: <MapPin className="h-6 w-6 text-orange-500" />,
+  //   };
+  //   return icons[iconName as keyof typeof icons];
+  // };
 
   return (
     <footer className="text-white">
       <div className="bg-[var(--navy-primary)] pt-[50px] pb-[30px]">
-        <div className="containerMaxWidth flex flex-col items-start gap-[40px] md:flex-row md:gap-[143px] ">
+        <div className="containerMaxWidth flex flex-col items-start gap-[40px] md:flex-row md:gap-[143px]">
           <div className="w-fit">
             <Image
               src={LogoMovil}
@@ -51,10 +51,13 @@ export function Footer() {
             />
           </div>
 
-          <div className="flex w-full flex-row gap-7  ">
-         
-            <div className="col-span-1 flex  flex-col gap-2.5 w-[36%]">
-              <TitleFooter text="Contáctanos" iconAlt="Icono de contacto" iconSrc={IconContact.src} />
+          <div className="flex w-full flex-row gap-7">
+            <div className="col-span-1 flex w-[36%] flex-col gap-2.5">
+              <TitleFooter
+                text="Contáctanos"
+                iconAlt="Icono de contacto"
+                iconSrc={IconContact.src}
+              />
 
               <LinkFooter
                 description="Líneas gratuitas de atención nacional"
@@ -73,9 +76,8 @@ export function Footer() {
               />
             </div>
 
-          
-            <div className="col-span-1 flex flex-col gap-7 md:flex-row w-full md:justify-between  md:w-[60%]  ">
-              <div className="flex flex-col gap-2.5 md:w-[38%] ">
+            <div className="col-span-1 flex w-full flex-col gap-7 md:w-[60%] md:flex-row md:justify-between">
+              <div className="flex flex-col gap-2.5 md:w-[38%]">
                 <TitleFooter
                   text="Puntos de atención"
                   iconAlt="Puntos de atencion"

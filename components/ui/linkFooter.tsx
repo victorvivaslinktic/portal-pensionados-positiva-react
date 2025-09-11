@@ -17,10 +17,12 @@ const LinkFooter: React.FC<LinkFooterProps> = ({
   smText = true,
 }) => {
   return (
-    <p className={`font-roboto font-normal ${smText ? "md:text-[12px]" : "md:text-[10px]"} text-[10px]`}>
+    <p
+      className={`font-roboto font-normal ${smText ? "md:text-[12px]" : "md:text-[10px]"} text-[10px]`}
+    >
       {description}
-      {addBreak && <br />}{' '}
-      <Link href={href} className=" font-semibold text-[var(--primary-positiva)] underline ">
+      {addBreak && <br />}{" "}
+      <Link href={href} className="font-semibold text-[var(--primary-positiva)] underline">
         {linkText}
       </Link>
     </p>
