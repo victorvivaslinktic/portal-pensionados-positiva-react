@@ -249,7 +249,7 @@ export default function LoginPage() {
                     required: "El número de documento es requerido",
                   })}
                   disabled={isLoading}
-                  placeholder="Número de documento"
+                  placeholder="Ingresa tu número de documento"
                   className={documentForm.formState.errors.document_number ? "border-red-500" : ""}
                 />
                 {documentForm.formState.errors.document_number && (
@@ -280,7 +280,7 @@ export default function LoginPage() {
                   type={showPassword ? "text" : "password"}
                   {...documentForm.register("password", { required: "La contraseña es requerida" })}
                   disabled={isLoading}
-                  placeholder="Tu contraseña"
+                  placeholder="Ingresa tu contraseña"
                   className={`px-11.75 ${documentForm.formState.errors.password ? "border-red-positiva" : ""}`}
                 />
                 <button
@@ -333,7 +333,7 @@ export default function LoginPage() {
                   },
                 })}
                 disabled={isLoading}
-                placeholder="tu@email.com"
+                placeholder="Ingresa tu correo electrónico"
                 className={emailForm.formState.errors.email ? "border-red-500" : ""}
               />
               {emailForm.formState.errors.email && (
@@ -363,7 +363,7 @@ export default function LoginPage() {
                   type={showPassword ? "text" : "password"}
                   {...emailForm.register("password", { required: "La contraseña es requerida" })}
                   disabled={isLoading}
-                  placeholder="Tu contraseña"
+                  placeholder="Ingresa tu contraseña"
                   className={`px-11.75 ${emailForm.formState.errors.password ? "border-red-positiva" : ""}`}
                 />
                 <button

@@ -16,6 +16,7 @@ import { usePasswordValidation } from "@/lib/hooks/use-password-validation";
 import { generateSecurePassword } from "@/lib/utils/generate-password";
 import Image from "next/image";
 import IconReload from "@/public/icon-reload.svg";
+import IconArrowLeft from "@/public/icon-arrow-left.svg";
 
 export default function ResetPage() {
   const router = useRouter();
@@ -142,9 +143,9 @@ export default function ResetPage() {
     // await trigger(["password", "confirm_password"]);
   };
 
-  // const handleBack = () => {
-  //   router.push("/auth/recover");
-  // };
+  const handleBack = () => {
+    router.push("/auth/recover");
+  };
 
   const getTokenFieldState = () => {
     if (tokenError) return "error";
@@ -220,14 +221,14 @@ export default function ResetPage() {
           {tokenError && (
             <div className="mt-2 rounded-md border border-red-200 bg-red-50 p-3">
               <div className="flex items-start space-x-2">
-                <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-red-500" />
-                <p className="text-sm text-red-600">{tokenError}</p>
+                <AlertCircle className="text-red-positiva mt-0.5 h-4 w-4 flex-shrink-0" />
+                <p className="text-red-positiva text-sm">{tokenError}</p>
               </div>
             </div>
           )}
 
           {!tokenError && touched.token && !tokenValid && (
-            <p className="mt-1 text-sm text-red-500">El código de verificación es requerido</p>
+            <p className="text-red-positiva mt-1 text-sm">El código de verificación es requerido</p>
           )}
         </div>
 
@@ -290,7 +291,7 @@ export default function ResetPage() {
           />
           <CustomButton
             type="submit"
-            name={isLoading ? "Restableciendo..." : "Restablecer Contraseña"}
+            name={isLoading ? "Restableciendo..." : "Guardar la contraseña"}
             iconPosition="right"
             icon={<ChevronsRight className="h-4 w-4" />}
             disabled={isLoading || !tokenValid || !passwordValidation.isValid || !passwordsMatch}
@@ -300,34 +301,39 @@ export default function ResetPage() {
         </div>
       </form>
 
-      {recoveryData && (
-        <div className="mt-4 text-center">
-          <button
-            onClick={handleResend}
-            disabled={isResending}
-            className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-bold hover:underline"
-          >
-            <Image
-              src={IconReload.src}
-              alt="icon"
-              width={18}
-              height={18}
-              className={`h-4 w-4 ${isResending ? "animate-spin" : ""}`}
-            />
-            <span>{isResending ? "Reenviando..." : "Reenviar código"}</span>
-          </button>
-        </div>
-      )}
+      <div className="mt-4 text-center">
+        <button
+          onClick={handleResend}
+          disabled={isResending}
+          className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-bold hover:underline"
+        >
+          <Image
+            src={IconReload}
+            alt="icon"
+            width={18}
+            height={18}
+            className={`h-4 w-4 ${isResending ? "animate-spin" : ""}`}
+          />
+          <span>{isResending ? "Reenviando..." : "Reenviar código"}</span>
+        </button>
+      </div>
 
-      {/* <div className="mt-4 text-center">
+      <div className="mt-4 text-center">
         <button
           onClick={handleBack}
-          className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-medium hover:underline"
+          className="text-primary-positiva mx-auto flex items-center justify-center space-x-2 font-bold hover:underline"
         >
-          <img src="/icon-arrow-left.svg" alt="" className="h-3.5 w-4.5" />
+          <Image
+            src={IconArrowLeft.src}
+            alt=""
+            className="h-3.5 w-4.5"
+            width={14}
+            height={14}
+            loading="lazy"
+          />
           <span>Volver</span>
         </button>
-      </div> */}
+      </div>
     </AuthCard>
   );
 }
