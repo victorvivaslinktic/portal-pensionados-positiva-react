@@ -43,7 +43,7 @@ export const CardCertificado = ({
 
       <div className="mt-6 w-full">
         <button
-          className="w-full cursor-pointer rounded-sm bg-[#FF7500] py-2 text-base font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50"
+          className="bg-primary-positiva hover:bg-navy-primary w-full cursor-pointer rounded-sm py-2 text-base font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50"
           onClick={handleDocumentAction}
           disabled={isLoading}
           aria-label="Enviar al correo"

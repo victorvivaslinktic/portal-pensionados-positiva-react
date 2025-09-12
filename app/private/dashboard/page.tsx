@@ -192,7 +192,7 @@ export default function DashboardPage() {
           <button
             onClick={handleLogout}
             disabled={isLoggingOut || isLoading !== null}
-            className="font-poppins bg-primary-positiva flex w-full cursor-pointer items-center justify-center space-x-2 rounded-md px-7.5 py-2 text-base font-semibold text-white transition-colors hover:bg-orange-600 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:px-6"
+            className="font-poppins bg-primary-positiva hover:bg-navy-primary flex w-full cursor-pointer items-center justify-center space-x-2 rounded-md px-7.5 py-2 text-base font-semibold text-white transition-colors disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:px-6"
             aria-label="Cerrar sesión y volver al login"
           >
             {isLoggingOut ? (

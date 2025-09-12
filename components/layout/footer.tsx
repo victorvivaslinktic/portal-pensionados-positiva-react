@@ -28,6 +28,10 @@ export function Footer() {
   //   return icons[iconName as keyof typeof icons];
   // };
 
+  const handleIconRedirect = (url: string) => {
+    window.open(url, "_blank");
+  };
+
   return (
     <footer className="text-white">
       <div className="bg-[var(--navy-primary)] pt-[50px] pb-[30px]">
@@ -96,10 +100,42 @@ export function Footer() {
                 <TitleFooter text="Redes sociales" />
 
                 <div className="flex flex-nowrap gap-2">
-                  <Image src={FacebookIcon} width={31} height={30} alt="Facebook icono" />
-                  <Image src={InstagramIcon} width={31} height={30} alt="Instagram icono" />
-                  <Image src={XIcon} width={31} height={30} alt="X icono" />
-                  <Image src={YoutubeIcon} width={31} height={30} alt="Youtube icono" />
+                  <Image
+                    src={FacebookIcon.src}
+                    width={31}
+                    height={30}
+                    alt="Facebook icono"
+                    className="hover:cursor-pointer"
+                    onClick={() =>
+                      handleIconRedirect(
+                        "https://www.facebook.com/PositivaCompaniaDeSeguros/?locale=es_LA"
+                      )
+                    }
+                  />
+                  <Image
+                    src={InstagramIcon.src}
+                    width={31}
+                    height={30}
+                    alt="Instagram icono"
+                    className="hover:cursor-pointer"
+                    onClick={() => handleIconRedirect("http://instagram.com/positivacol/?hl=es")}
+                  />
+                  <Image
+                    src={XIcon.src}
+                    width={31}
+                    height={30}
+                    alt="X icono"
+                    className="hover:cursor-pointer"
+                    onClick={() => handleIconRedirect("https://x.com/PositivaCol")}
+                  />
+                  <Image
+                    src={YoutubeIcon.src}
+                    width={31}
+                    height={30}
+                    alt="Youtube icono"
+                    className="hover:cursor-pointer"
+                    onClick={() => handleIconRedirect("https://www.youtube.com/@PositivaColombia")}
+                  />
                 </div>
                 <a
                   href="https://www.positiva.gov.co"
