@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   output: "export",
-  basePath: "/portal-pensionados",
+ // basePath: "/portal-pensionados",
 };
 
 export default nextConfig;

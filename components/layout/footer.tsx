@@ -1,6 +1,6 @@
 "use client";
 
-// import Link from "next/link";
+import Link from "next/link";
 import Image from "next/image";
 // import { Hammer, Building, UserRound, MapPin, Facebook, Instagram, X, Youtube } from "lucide-react";
 // import { redirections } from "@/lib/utils/redirections";
@@ -38,7 +38,7 @@ export function Footer() {
               width={403}
               height={60}
               alt="Logo positiva móvil"
-              className="block xl:hidden"
+              className="block sm:hidden"
             />
 
             {/* Logo desktop */}
@@ -47,7 +47,7 @@ export function Footer() {
               width={208}
               height={40}
               alt="Logo positiva blanco"
-              className="hidden xl:block"
+              className="hidden sm:block"
             />
           </div>
 
@@ -77,11 +77,11 @@ export function Footer() {
             </div>
 
             <div className="col-span-1 flex w-full flex-col gap-7 md:w-[60%] md:flex-row md:justify-between">
-              <div className="flex flex-col gap-2.5 md:w-[38%]">
+              <div className="flex flex-col gap-2.5 md:w-[43%]">
                 <TitleFooter
                   text="Puntos de atención"
                   iconAlt="Puntos de atencion"
-                  iconSrc={PuntosDeAtencion}
+                  iconSrc={PuntosDeAtencion.src}
                 />
 
                 <LinkFooter
@@ -96,10 +96,32 @@ export function Footer() {
                 <TitleFooter text="Redes sociales" />
 
                 <div className="flex flex-nowrap gap-2">
-                  <Image src={FacebookIcon} width={31} height={30} alt="Facebook icono" />
-                  <Image src={InstagramIcon} width={31} height={30} alt="Instagram icono" />
-                  <Image src={XIcon} width={31} height={30} alt="X icono" />
-                  <Image src={YoutubeIcon} width={31} height={30} alt="Youtube icono" />
+                  <Link
+                    href="http://facebook.com/PositivaCompaniaDeSeguros/?locale=es_LA"
+                    target="_blank"
+                  >
+                    {" "}
+                    <Image src={FacebookIcon} width={31} height={30} alt="Facebook icono" />{" "}
+                  </Link>
+
+                  <Link
+                    href="https://www.instagram.com/positivacol/?hl=es"
+                    target="_blank"
+                  >
+                    <Image src={InstagramIcon} width={31} height={30} alt="Instagram icono" />
+                  </Link>
+                  <Link
+                    href="https://x.com/PositivaCol"
+                    target="_blank"
+                  >
+                    <Image src={XIcon} width={31} height={30} alt="X icono" />
+                  </Link>
+                  <Link
+                    href="https://www.youtube.com/@PositivaColombia"
+                    target="_blank"
+                  >
+                    <Image src={YoutubeIcon} width={31} height={30} alt="Youtube icono" />
+                  </Link>
                 </div>
                 <a
                   href="https://www.positiva.gov.co"
@@ -115,7 +137,7 @@ export function Footer() {
 
       {/* Footer bottom */}
       <div className="flex justify-center bg-[#0D2333] px-[10px] py-[15px] text-[12px] md:text-[14px]">
-        <h4>© 2025 Positiva Compañía de Seguros. Todos los derechos reservados. HOLA</h4>
+        <h4>© 2025 Positiva Compañía de Seguros. Todos los derechos reservados.</h4>
       </div>
     </footer>
   );
