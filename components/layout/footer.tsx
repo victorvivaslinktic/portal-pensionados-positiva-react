@@ -42,7 +42,7 @@ export function Footer() {
               width={403}
               height={60}
               alt="Logo positiva móvil"
-              className="block xl:hidden"
+              className="block sm:hidden"
             />
 
             {/* Logo desktop */}
@@ -51,7 +51,7 @@ export function Footer() {
               width={208}
               height={40}
               alt="Logo positiva blanco"
-              className="hidden xl:block"
+              className="hidden sm:block"
             />
           </div>
 
@@ -81,11 +81,11 @@ export function Footer() {
             </div>
 
             <div className="col-span-1 flex w-full flex-col gap-7 md:w-[60%] md:flex-row md:justify-between">
-              <div className="flex flex-col gap-2.5 md:w-[38%]">
+              <div className="flex flex-col gap-2.5 md:w-[43%]">
                 <TitleFooter
                   text="Puntos de atención"
                   iconAlt="Puntos de atencion"
-                  iconSrc={PuntosDeAtencion}
+                  iconSrc={PuntosDeAtencion.src}
                 />
 
                 <LinkFooter
@@ -151,7 +151,7 @@ export function Footer() {
 
       {/* Footer bottom */}
       <div className="flex justify-center bg-[#0D2333] px-[10px] py-[15px] text-[12px] md:text-[14px]">
-        <h4>© 2025 Positiva Compañía de Seguros. Todos los derechos reservados. HOLA</h4>
+        <h4>© 2025 Positiva Compañía de Seguros. Todos los derechos reservados.</h4>
       </div>
     </footer>
   );
